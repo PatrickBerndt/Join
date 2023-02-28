@@ -37,109 +37,21 @@
         <a class="navLink activ" href="#"><img src="assets/icon/addTask.png"><p>Add Task</p></a>
         <a class="navLink" href="contacts.html"><img src="assets/icon/contacts.png"><p>Contacts</p></a>
     </nav>
-    <div class="JackBauer">
-    <div class="haupt-content addTask-content">
-
-            <form class="addTaskFormHTML" onsubmit="addToTask(0, 'toDo'); return false; ">
-                <div class="inputTitle">
-                    <input id="AddTitle" type="text" placeholder="Enter a title" autocomplete="off" required="">
-                </div>
-
-                <div id="userSelector">
-                    <div class="selectorHeader" onclick="showUsers()">
-                        Select contacts to assign
-                        <img class="selectorArrow" src="assets/icon/Vector 2.png" alt="">
-                    </div>
-                </div>
-
-                <div class="selectorUser-dropdown" id="selectorUser_dropdown">
-
-                </div>
-
-                <div id="selectorUser_dropdown_contact" class="displayFlexIn-addtask">
-
-                </div>
-
-                <div class="input border-bottom" style="display:flex; flex-direction: column; align-items:flex-start;">
-                    <h4>Due Date</h4>
-                    <div class="inputDate" id="inputDate">
-                        <input id="add-date" class="add-date" placeholder="dd/mm/yy" type="date" min="2023-03-20">
-                    </div>
-                </div>
-
-                <h4>Category</h4>
-                <div class="d-none" id="chooseCategory">This field is required</div>
-                <div id="category_selector">
-                    <div class="selectorHeader" onclick="showTaskCategories()">
-                        Select task category
-                        <img class="selectorArrow" src="assets/icon/Vector 2.png" alt="">
-                    </div>
-                </div>
-
-                <div class="selector-Category-Dropdown" id="selector_Category_Dropdown">
-
-                </div>
-
-                <div class="priority-Content">
-                    <div class="priority-Urgent" onclick="selectedPriority(1)" id="priorityUrgent">
-                        <p>Urgent</p>
-                        <img id="priorityUrgentImg" src="assets/icon/prioUrgent.png" alt="">
-                    </div>
-
-                    <div class="priority-Medium" id="priorityMedium" onclick="selectedPriority(2)">
-                        <p>Medium</p>
-                        <img id="priorityMediumImg" src="assets/icon/prioMedium.png" alt="">
-                    </div>
-
-                    <div class="priority-Low" id="priorityLow" onclick="selectedPriority(3)">
-                        <p>Low</p>
-                        <img id="priorityLowImg" src="assets/icon/prioLow.png" alt="">
-                    </div>
-                </div>
-
-                <div>
-                    <h4>Description</h4>
-                    <textarea class="add-description" id="AddDescription" placeholder="Enter a Description"></textarea>
-                </div>
-
-                <h4>Subtasks</h4>
-                <div id="empty_subtask_text">
-
-                </div>
-
-                <div class="inputSubtasks pointer" id="newSubtask_select">
-                    <div class="inputUser">
-                        <div class="inputfieldNew-User">
-                            <input class="input border-bottom" id="new_subtask_text" type="text" placeholder="Add new subtask">
-                            <div class="checkAndCrossIconsCategory">
-                                <img src="./assets/icon/puls-blue.png" onclick="clearSubTasks()" class="blue-cross pointer">
-                        </div>
-                        
-                    </div>
-                    <div class="inputSubtasks pointer" id="newSubtask_select0">
-                            <img src="./assets/icon/Rectangle-blue-check.png" onclick="pushSubtasks()" class="blue-check pointer">
-                        <p>Subtask 1</p>
-                        </div>
-
-                    <div class="newSubtasks" id="addSubtaskCheckbox">
-                    </div>
-                </div>
-
-                <div class="addTask-bottom">
-                    <button class="btn clear-button">
-                        <p>Clear</p>
-                        <img src="assets/icon/clear.png" alt="">
-                    </button>
-
-                    <button class="btn addTask-button">
-                        <p>Create Task</p>
-                        <img src="assets/icon/check.png" alt="">
-                    </button>
-                </div>
-            </form>
-            <div id="detail_content"></div>
-            <div id="AddTaskMaskContact" onclick="doNotClose(event)" class="relative d-none"></div>
+    <div class="addTaskMain">
+        <input class="enterTitleInput" type="text" placeholder="Enter a title">
+        <div id="assignTo"></div>
+        <input class="dueDateInput" type="date" name="" id="dueDate">
+        <div id="addCategory"></div>
+        <div class="priorityBtn">
+            <button>Urgent <img src="assets/icon/prioUrgent.png"></button>
+            <button>Medium <img src="assets/icon/prioMedium.png"></button>
+            <button>Low <img src="assets/icon/prioLow.png"></button>  
         </div>
+        
+        <textarea name="" id="description" cols="30" rows="10"></textarea>
+        <input type="text">
+        <div id="addedSubtask"></div>
     </div>
+    
 </body>
 </html>
