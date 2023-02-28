@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Join</title>
+    <link
+      rel="shortcut icon"
+      href="assets/icon/favicon.png"
+      type="image/x-icon"
+    />
+     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/contact.css" />
+    <link rel="stylesheet" href="css/board.css" />
+    <link rel="stylesheet" href="css/help.css" />
+
+    <script src="mini_backend.js"></script>
+    <script src="script.js"></script>
+    <script src="js/contact.js"></script>
+    <script src="js/board.js"></script>
+    <script src="js/addTask.js"></script>
+    <script src="js/template.js"></script>
+    
+    
+  </head>
+  <body>
+    <header>
+      <img class="head-logo" src="assets/icon/logoSmallWhite.png" />
+      <div class="head-right">
+        <p>Kanban Project Management Tool</p>
+        <img src="assets/icon/help.png" style="cursor: pointer;" onclick="window.location.href='help.html';" />
+      </div>
+    </header>
+     <nav>
+      <a class="navLink" href="summary.html"
+        ><img src="assets/icon/summary.png" />
+        <p>Summary</p></a
+      >
+      <a class="navLink activ" href="#"
+        ><img src="assets/icon/board.png" />
+        <p>Board</p></a
+      >
+      <a class="navLink" href="addTask.html"
+        ><img src="assets/icon/addTask.png" />
+        <p>Add Task</p></a
+      >
+      <a class="navLink" href="contacts.html"
+        ><img src="assets/icon/contacts.png" />
+        <p>Contacts</p></a
+      >
+       <a class="legalNotice" href="./impress.html">
+          <img src="assets/icon/info.png" alt="" />
+          <p>Legal notice</p>
+        </a>
+      </div>
+    </nav>
+
+       
+
+      <div class="haupt-content">
+        <!--ein Container-Element mit dem Klassennamen "haupt-content"-->
+        <div class="headBar">
+            <!--ein weiteres Container-Element mit dem Klassennamen "headBar" innerhalb des "haupt-content"-Containers-->
+          <div class="Button1">
+            <!--ein weiteres Container-Element mit dem Klassennamen "Button1" innerhalb des "headBar"-Containers.-->
+            <div class="searchtask-content">
+                <!-- ein weiteres Container-Element mit dem Klassennamen "searchtask-content" innerhalb des "Button1"-Containers.-->
+              <div class="input-w">
+                <!--ein weiteres Container-Element mit dem Klassennamen "input-w" innerhalb des "searchtask-content"-Containers.-->
+                <input
+                  class="search1"
+                  id="search1"
+                  type="text"
+                  placeholder="Find Task"
+                  onkeyup="handleFilterTasks()"
+                />
+                <!--ein Eingabefeld-Element mit dem Klassennamen "search1", einer ID von "search1", einem Typ von "text", einem Platzhaltertext von "Find Task" und einem onkeyup-Ereignis, das die Funktion "handleFilterTasks()" aufruft.-->
+                <div class="searchicon-w">
+                    <!--ein weiteres Container-Element mit dem Klassennamen "search-icon-w" innerhalb des "input-w"-Containers.-->
+                  <div class="vector"></div>
+                  <!--ein leeres Container-Element mit dem Klassennamen "vector" innerhalb des "searchicon-w"-Containers.-->
+                  <img src="assets/icon/Vector.png" />
+                  <!--ein Bild-Element, das ein Bild anzeigt, das sich unter dem Pfad "assets/icon/Vector.png" befindet und es im "searchicon-w"-Container platziert.-->
+                </div>
+              </div>
+            </div>
+            <button onclick="openAddTask0(1, 'toDo')" class="addTask0">
+            
+              <img src="assets/icon/AddTask0.png" alt="" />
+            </button>
+            <!--ein Schaltflächen-Element mit dem Klassennamen "addTask0", einem onclick-Ereignis, das die Funktion "openAddTaskMask()" mit zwei Parametern aufruft, einem Textelement, das "Add Task" anzeigt, und einem Bild-Element, das ein Bild anzeigt, das sich unter dem Pfad "assets/icon/addTask0.png" befindet. Die Schaltfläche wird im "Button1"-Container platziert.-->
+          </div>
+        </div>
+
+        <div class="kanbanBoard">
+            <!-- ein Container-Element mit dem Klassennamen "kanbanBoard"-->
+          <div class="dragArea-Content" id="toDo-Content">
+            <!--ein weiteres Container-Element mit dem Klassennamen "dragArea-Content" und einer ID von "toDo-Content" innerhalb des "kanbanBoard"-Containers.-->
+            <div class="dragAreaTop-Section">
+                <!--ein weiteres Container-Element mit dem Klassennamen "dragAreaTop-Section" innerhalb des "dragArea-Content"-Containers.-->
+              <h3>To do</h3>
+              <!-- ein Textelement, das "To do" anzeigt und im "dragAreaTop-Section"-Container platziert wird.-->
+              <img
+                onclick="openAddTaskMask(1, 'todo');"
+                class="addButton"
+                src="assets/icon/addButton.png"
+                alt=""
+              />
+              <!-- ein Bild-Element, das ein Bild anzeigt, das sich unter dem Pfad "assets/icon/addButton.png" befindet. Wenn es angeklickt wird, ruft es die Funktion "openAddTaskMask()" mit zwei Parametern auf und hat den Klassennamen "addButton". Das Bild wird im "dragAreaTop-Section"-Container platziert.-->
+            </div>
+
+            <div
+              class="dragArea"
+              id="todo"
+              ondrop="moveTo('todo')"
+              ondragover="allowDrop(event)"
+            >
+            <!--ein Container-Element mit dem Klassennamen "dragArea" und einer ID von "todo". Wenn ein Element in den Container gezogen wird und fallen gelassen wird, wird die Funktion "moveTo()" aufgerufen, um das Element in die entsprechende Spalte zu verschieben. "moveTo()" wird mit dem Parameter "todo" aufgerufen, um anzuzeigen, dass das Element in der "To do"-Spalte platziert werden soll. Die Funktion "allowDrop()" wird aufgerufen, wenn ein Element über dem Container gezogen wird, um das Ablegen des Elements zu ermöglichen. Es wird das Ereignis-Objekt an die Funktion übergeben.
+-->
+              <div
+                onclick="checkDevice()"
+                draggable="true"
+                ondragstart="startDragging(68955220033)"
+                class="todo"
+                id="68955220033"
+              >
+              <!--ein Container-Element mit dem Klassennamen "todo" und einer ID von "68955220033". Wenn das Element angeklickt wird, wird die Funktion "checkDevice()" aufgerufen. Das Element kann gezogen werden, da "draggable" auf "true" gesetzt ist. Wenn das Element gezogen wird, wird die Funktion "startDragging()" aufgerufen, um das Element vorzubereiten. "startDragging()" wird mit der ID des Elements als Parameter aufgerufen.-->
+                <div id="taskMenu-68955220033" class="taskMenu d-none">
+                  <div
+                    ontouchstart="showDetailWindow(68955220033)"
+                    class="taskMenu-edit"
+                  >
+                  <!--ein Container-Element mit der ID "taskMenu-68955220033" und dem Klassennamen "taskMenu". Das Element hat standardmäßig die Klasse "d-none", was bedeutet, dass es standardmäßig ausgeblendet ist. Wenn das Element mit Touch-Gesten bedient wird, wird die Funktion "showDetailWindow()" aufgerufen, um das Detailfenster des Elements zu öffnen. "showDetailWindow()" wird mit der ID des Elements als Parameter aufgerufen. Das innere Element hat den Klassennamen "taskMenu-edit" und wird verwendet, um das Bearbeitungsmenü für das Element anzuzeigen.-->
+                    Edit
+                  </div>
+                  <div id="touch-move-68955220033" class="taskMenu-move">
+                    Move to:
+                  </div>
+                  <!--Dies ist ein Teil des Bearbeitungsmenüs für das Task-Element. Wenn das Element berührt wird, wird die ID des Elements an die Funktion "showDetailWindow()" übergeben, um das Detailfenster zu öffnen. Das erste innere Element mit dem Klassennamen "taskMenu-edit" zeigt den Text "Edit" an und wird verwendet, um das Bearbeitungsmenü zu öffnen. Das zweite innere Element mit der ID "touch-move-68955220033"" und dem Klassennamen "taskMenu-move" zeigt den Text "Move to:" an und wird verwendet, um dem Benutzer anzuzeigen, dass das Element verschoben werden kann.-->
+
+                  <div
+                    ontouchstart="touchMoveTask(68955220033, 'inProgress')"
+                    class="taskMenu-move-entry"
+                  >
+                    In Progress
+                  </div>
+                  <!--Dies ist ein Eintrag in der Aufgabenbewegungsliste des TaskMenüs. Wenn der Benutzer das Element berührt, wird die Funktion "touchMoveTask()" aufgerufen und die ID des Elements sowie der Status "inProgress" übergeben. Das Element wird dann in den "In Progress"-Bereich verschoben. Das Element hat den Text "In Progress" und eine Klasse "taskMenu-move-entry".-->
+
+                  <div
+                    ontouchstart="touchMoveTask(68955220033, 'awaitingFeedback')"
+                    class="taskMenu-move-entry"
+                  >
+                    Awaiting Feedback
+                  </div>
+                  <!--Dies ist ein Eintrag in der Aufgabenbewegungsliste des TaskMenüs. Wenn der Benutzer das Element berührt, wird die Funktion "touchMoveTask()" aufgerufen und die ID des Elements sowie der Status "awaitingFeedback" übergeben. Das Element wird dann in den "Awaiting Feedback"-Bereich verschoben. Das Element hat den Text "Awaiting Feedback" und eine Klasse "taskMenu-move-entry".-->
+
+                  <div
+                    ontouchstart="touchMoveTask(68955220033, 'done')"
+                    class="taskMenu-move-entry"
+                  >
+                    Done
+                  </div>
+                </div>
+                <span class="purpleCategory">Sales</span>
+                <div class="titleAndText">
+                   <h4 class="title">Aurevoir</h4>
+                  <div class="text">Bonjour,Monsieur</div>
+               </div>
+                <!--Dies ist ein Eintrag in der Aufgabenbewegungsliste des Task-Menüs. Wenn der Benutzer das Element berührt, wird die Funktion "touchMoveTask()" aufgerufen und die ID des Elements sowie der Status "done" übergeben. Das Element wird dann in den "Done"-Bereich verschoben. Das Element hat den Text "Done" und eine Klasse "task-menu-move-entry".-->
+                <span class="blueCategory">Backoffice</span>
+                <!--eine Kategorie für die Aufgabe mit dem Text "Backoffice" und einer Klasse "blueCategory", die wahrscheinlich zur Farbgebung des Elements verwendet wird.-->
+                <div class="titleAndText">
+                  <h4 class="title">buongiorno</h4>
+                  <div class="text">guten Morgen</div>
+                </div>
+                <!--Dies erstellt den Titel- und Textbereich der Aufgabe. Der Titelbereich ist ein Überschriftselement "h4" mit dem Text "dddddddddd" und der Textbereich ist ein div-Element mit dem Text "ssssssssssss". Beide Elemente sind innerhalb eines div-Elements mit der Klasse "titleAndText" enthalten, das wahrscheinlich zur Positionierung der Elemente verwendet wird.-->
+
+                <div id="taskProgress_9785412589" class="taskProgress">
+                  <div class="progressBar">
+                    <!--Der div-Container enthält die Fortschrittsleiste des Tasks. Das span-Element zeigt an, wie viele Untertasks erledigt wurden und wie viele noch übrig sind.-->
+                    <div
+                      class="progressBar-giov"
+                      id="giov9785412589"
+                      style="width: 0%"
+                    ></div>
+                  </div>
+                  <span class="progressBar-text" id="giov-text9785412589"
+                    >0/1 Done</span
+                  >
+                </div>
+                <!--    Die erste Zeile definiert ein neues HTML-Element mit der ID "task_progress_1435899602773" und der Klasse "task-progress", das eine Fortschrittsanzeige enthält.
+    In der Fortschrittsanzeige gibt es einen Container mit der Klasse "progress-bar", der einen Füllbalken enthält, der in der nächsten Zeile definiert wird.
+    Die nächste Zeile definiert einen weiteren Container mit der Klasse "progress-bar-fill" und der ID "fill1435899602773". Die Breite des Füllbalkens wird hier auf 0% gesetzt, da der Task noch nicht erledigt ist.
+    Unterhalb des Füllbalkens wird in der Fortschrittsanzeige ein Textcontainer mit der ID "fill-text1435899602773" erstellt, in dem der Fortschritt in Prozenten (0/1 Done) angezeigt wird.-->
+
+                <div class="User-Priority" id="User_priority">
+                  <div class="contactsIn-Task" id="contacts8005698">
+                    <div style="background-color: #375f11" class="user">KAM</div>
+
+                    <div style="background-color: #7b98e9" class="user">FRA</div>
+
+                    <div style="background-color: #5d0f86" class="user">BEL</div>
+
+                    <div style="background-color: #a16e7d" class="user">ENG</div>
+                  </div>
+                  <!--Dieser Codeabschnitt definiert eine Gruppe von Benutzern, die einer Aufgabe zugewiesen sind.
+
+    <div class="UserAndPriority" id="user_and_priority">: Dieses Element ist ein Container für die Benutzer und die Priorität der Aufgabe.
+
+    <div class="contacts-in-task" id="contacts1435899602773">: Dieses Element ist ein Container für die Benutzer, die der Aufgabe zugewiesen sind. Die ID "contacts1435899602773" ist eine eindeutige Kennung für diese Gruppe von Benutzern.
+
+    <div style="background-color: #375f11" class="user">S</div>: Dieses Element repräsentiert einen Benutzer. "S" ist der Name des Benutzers und "#375f11" ist die Hintergrundfarbe des Benutzer-Icons. Jeder Benutzer hat eine eindeutige Hintergrundfarbe, die seine Identität darstellt.
+
+    <div style="background-color: #7b98e9" class="user">O</div>: Dieses Element repräsentiert einen weiteren Benutzer mit dem Namen "O" und einer eindeutigen Hintergrundfarbe.
+
+    <div style="background-color: #5d0f86" class="user">MH</div>: Dieses Element repräsentiert einen weiteren Benutzer mit dem Namen "MH" und einer eindeutigen Hintergrundfarbe.
+
+    <div style="background-color: #a16e7d" class="user">D</div>: Dieses Element repräsentiert einen weiteren Benutzer mit dem Namen "D" und einer eindeutigen Hintergrundfarbe.
+
+Diese Gruppe von Benutzern gibt an, wer an der Aufgabe arbeitet oder für sie verantwortlich ist.-->
+
+                  <div class="priorityFirst">
+                    <img src="assets/icon/prioUrgent.png" alt="" />
+                  </div>
+                </div>
+              </div>
+              <div id="drop_template_toDo" class="drag-template d-none"></div>
+            </div>
+          </div>
+          <!--Diese HTML-Komponente zeigt eine Karte auf einem Kanban-Board an, die einen Task darstellt. Der Task befindet sich in der Spalte "To do". Hier ist eine Erläuterung der einzelnen Code-Zeilen:-->
+          <!--Der div-Container enthält den Bereich für die Benutzer, die an diesem Task beteiligt sind, und die Priorität des Tasks (img-Element). Die Benutzer werden als farbige Kreise dargestellt, wobei jeder Benutzer eine andere Farbe hat.-->
+          <div class="dragArea-Content" id="inProgress-Content">
+            <div class="dragAreaTop-Section">
+              <h3>In Progress</h3>
+              <img
+                onclick="openAddTaskMask(1, 'inProgress')"
+                class="addButton"
+                src="assets/icon/addButton.png"
+                alt=""
+              />
+            </div>
+
+            <div
+              class="dragArea"
+              id="inProgress"
+              ondrop="moveTo('inProgress')"
+              ondragover="allowDrop(event)"
+            >
+              <div
+                onclick="checkDevice()"
+                draggable="true"
+                ondragstart="startDragging(2548965)"
+                class="todo"
+                id="2548965"
+              >
+                <div id="taskMenu-2548965" class="taskMenu d-none">
+                  <div
+                    ontouchstart="showDetailWindow(2548965)"
+                    class="taskMenu-edit"
+                  >
+                    Edit
+                  </div>
+                  <div id="touch-move-2548965" class="taskMenu-move">
+                    Move to:
+                  </div>
+
+                  <div
+                    ontouchstart="touchMoveTask(2548965, 'toDo')"
+                    class="taskMenu-move-entry"
+                  >
+                    To do
+                  </div>
+
+                  <div
+                    ontouchstart="touchMoveTask(2548965, 'awaitingFeedback')"
+                    class="taskMenu-move-entry"
+                  >
+                    Awaiting Feedback
+                  </div>
+
+                  <div
+                    ontouchstart="touchMoveTask(2548965, 'done')"
+                    class="taskMenu-move-entry"
+                  >
+                    Done
+                  </div>
+                </div>
+                <span class="orangeCategory">HR</span>
+                <div class="titleAndText">
+                  <h4 class="title">Versuchung</h4>
+                  <div class="text">JackBauer</div>
+                </div>
+
+                <div id="taskProgress_974523632" class="taskProgress">
+                  <div class="progressBar">
+                    <div
+                      class="progressBar-giov"
+                      id="giov974523632"
+                      style="width: 100%"
+                    ></div>
+                  </div>
+                  <span class="progressBar-tex" id="giov-text974523632"
+                    >1/1 Done</span
+                  >
+                </div>
+
+                <div class="User-Priority" id="User-Priority">
+                  <div class="contactsIn-Task" id="contacts974523632">
+                    <div style="background-color: #c6d248" class="user">KON</div>
+
+                    <div style="background-color: #e36d6f" class="user">GAB</div>
+
+                    <div style="background-color: #5d0f86" class="user">MAL</div>
+                  </div>
+                  <!--Der div-Container enthält den Bereich für die Benutzer, die an diesem Task beteiligt sind, und die Priorität des Tasks (img-Element). Die Benutzer werden als farbige Kreise dargestellt, wobei jeder Benutzer eine andere Farbe hat.-->
+
+                  <div class="priorityFirst">
+                    <img src="assets/icon/prioUrgent.png" alt="" />
+                  </div>
+                </div>
+              </div>
+              <div
+                onclick="checkDevice()"
+                draggable="true"
+                ondragstart="startDragging(585007401586)"
+                class="todo"
+                id="585007401586"
+              >
+                <div id="taskMenu-585007401586" class="taskMenu d-none">
+                  <div
+                    ontouchstart="showDetailWindow(585007401586)"
+                    class="taskMenu-edit"
+                  >
+                    Edit
+                  </div>
+                  <div id="touch-move-585007401586" class="taskMenu-move">
+                    Move to:
+                  </div>
+
+                  <div
+                    ontouchstart="touchMoveTask(585007401586, 'toDo')"
+                    class="taskMenu-move-entry"
+                  >
+                    To do
+                  </div>
+
+                  <div
+                    ontouchstart="touchMoveTask(585007401586, 'awaitingFeedback')"
+                    class="taskMenu-move-entry"
+                  >
+                    Awaiting Feedback
+                  </div>
+
+                  <div
+                    ontouchstart="touchMoveTask(585007401586, 'done')"
+                    class="taskMenu-move-entry"
+                  >
+                    Done
+                  </div>
+                </div>
+                <span class="purpleCategory">Sales</span>
+                <div class="titleAndText">
+                  <h4 class="title">Saluto</h4>
+                  <div class="text">vienidame</div>
+                </div>
+
+                <div id="taskProgress_585007401586" class="taskProgress">
+                  <div class="progressBar">
+                    <div
+                      class="progressBar-giov"
+                      id="giov585007401586"
+                      style="width: 0%"
+                    ></div>
+                  </div>
+                  <span class="progressBar-tex" id="giov-text585007401586"
+                    >0/1 Done</span
+                  >
+                </div>
+
+                <div class="User-Priority" id="User-Priority">
+                  <div class="contactsIn-Task" id="contacts585007401586">
+                    <div style="background-color: #e36d6f" class="user">GAN</div>
+                    <div style="background-color: #915768" class="user">DAN</div>
+                    <div style="background-color: #a16e7d" class="user">DEU</div>
+                  </div>
+
+                  <div class="priorityFirst">
+                    <img src="assets/icon/prioLow.png" alt="" />
+                  </div>
+                </div>
+              </div>
+              <div
+                id="drop_template_inProgress"
+                class="drag-template d-none"
+              ></div>
+            </div>
+          </div>
+
+          <div class="dragArea-Content" id="awaitingFeedback-Content">
+            <div class="dragAreaTop-Section">
+              <h3>Awaiting Feedback</h3>
+              <img
+                onclick="openAddTaskMask(1, 'awaitingFeedback')"
+                class="addButton"
+                src="assets/icon/addButton.png"
+                alt=""
+              />
+            </div>
+
+            <div
+              class="dragArea"
+              id="awaitingFeedback"
+              ondrop="moveTo('awaitingFeedback')"
+              ondragover="allowDrop(event)"
+            >
+              <div
+                onclick="checkDevice()"
+                draggable="true"
+                ondragstart="startDragging(1634694036825)"
+                class="todo"
+                id="1634694036825"
+              >
+                <div id="taskMenu-1634694036825" class="taskMenu d-none">
+                  <div
+                    ontouchstart="showDetailWindow(1634694036825)"
+                    class="taskMenu-edit"
+                  >
+                    Edit
+                  </div>
+                  <div id="touch-move-1634694036825" class="taskMenu-move">
+                    Move to:
+                  </div>
+
+                  <div
+                    ontouchstart="touchMoveTask(1634694036825, 'toDo')"
+                    class="taskMenu-move-entry"
+                  >
+                    To do
+                  </div>
+
+                  <div
+                    ontouchstart="touchMoveTask(1634694036825, 'inProgress')"
+                    class="taskMenu-move-entry"
+                  >
+                    In Progress
+                  </div>
+
+                  <div
+                    ontouchstart="touchMoveTask(1634694036825, 'done')"
+                    class="taskMenu-move-entry"
+                  >
+                    Done
+                  </div>
+                </div>
+                <span class="purpleCategory">Sales</span>
+                <div class="titleAndText">
+                  <h4 class="title">pierdole</h4>
+                  <div class="text">amonakue</div>
+                </div>
+
+                <div
+                  id="taskProgress_1634694036825"
+                  class="taskProgress"
+                ></div>
+
+                <div class="User-Priority" id="User-Priority">
+                  <div class="contactsIn-Task" id="contacts1634694036825">
+                    <div style="background-color: #a16e7d" class="user">USA</div>
+                    <div style="background-color: #3f0b1b" class="user">DEU</div>
+                  </div>
+
+                  <div class="priorityFirst">
+                    <img src="assets/icon/prioUrgent.png" alt="" />
+                  </div>
+                </div>
+              </div>
+              <div
+                id="drop_template_awaitingFeedback"
+                class="drag-template d-none"
+              ></div>
+            </div>
+          </div>
+
+          <div class="dragArea-Content" id="done-Content">
+            <div class="dragAreaTop-Section">
+              <h3>Done</h3>
+              <img
+                onclick="openAddTaskMask(1, 'done')"
+                class="addButton"
+                src="assets/icon/addButton.png"
+                alt=""
+              />
+            </div>
+
+            <div
+              class="dragArea"
+              id="done"
+              ondrop="moveTo('done')"
+              ondragover="allowDrop(event)"
+            >
+              <div
+                onclick="checkDevice()"
+                draggable="true"
+                ondragstart="startDragging(926684287450)"
+                class="todo"
+                id="926684287450"
+              >
+                <div id="taskMenu-926684287450" class="taskMenu d-none">
+                  <div
+                    ontouchstart="showDetailWindow(926684287450)"
+                    class="taskMenu-edit"
+                  >
+                    Edit
+                  </div>
+                  <div id="touch-move-926684287450" class="taskMenu-move">
+                    Move to:
+                  </div>
+
+                  <div
+                    ontouchstart="touchMoveTask(926684287450, 'toDo')"
+                    class="taskMenu-move-entry"
+                  >
+                    To do
+                  </div>
+
+                  <div
+                    ontouchstart="touchMoveTask(926684287450, 'inProgress')"
+                    class="taskMenu-move-entry"
+                  >
+                    In Progress
+                  </div>
+
+                  <div
+                    ontouchstart="touchMoveTask(926684287450, 'awaitingFeedback')"
+                    class="taskMenu-move-entry"
+                  >
+                    Awaiting Feedback
+                  </div>
+                </div>
+                <span class="orangeCategory">HR</span>
+                <div class="titleAndText">
+                  <h4 class="title">La Practiciter de joel</h4>
+                  <div class="text">
+                     luciano ist Back.
+                  </div>
+                </div>
+
+                <div id="taskProgress_926684287450" class="taskProgress">
+                  <div class="progressBar">
+                    <div
+                      class="progressBar-giov"
+                      id="giov926684287450"
+                      style="width: 100%"
+                    ></div>
+                  </div>
+                  <span class="progressBar-text" id="giov-text926684287450"
+                    >0/1 Done</span
+                  >
+                </div>
+
+                <div class="User-Priority" id="User-Priority">
+                  <div class="contactsIn-Task" id="contacts926684287450">
+                    <div style="background-color: #a16e7d" class="user">DAK</div>
+                    <div style="background-color: #311920" class="user">DEU</div>
+                  </div>
+
+                  <div class="priorityFirst">
+                    <img src="assets/icon/prioLow.png" alt="" />
+                  </div>
+                </div>
+              </div>
+              <div
+                onclick="checkDevice()"
+                draggable="true"
+                ondragstart="startDragging(68785335099)"
+                class="todo"
+                id="68785335099"
+              >
+                <div id="taskMenu-68785335099" class="taskMenu d-none">
+                  <div
+                    ontouchstart="showDetailWindow(68785335099)"
+                    class="taskMenu-edit"
+                  >
+                    Edit
+                  </div>
+                  <div id="touch-move-68785335099" class="taskMenu-move">
+                    Move to:
+                  </div>
+
+                  <div
+                    ontouchstart="touchMoveTask(68785335099, 'toDo')"
+                    class="taskMenu-move-entry"
+                  >
+                    To do
+                  </div>
+
+                  <div
+                    ontouchstart="touchMoveTask(68785335099, 'inProgress')"
+                    class="taskMenu-move-entry"
+                  >
+                    In Progress
+                  </div>
+
+                  <div
+                    ontouchstart="touchMoveTask(68785335099, 'awaitingFeedback')"
+                    class="taskMenu-move-entry"
+                  >
+                    Awaiting Feedback
+                  </div>
+                </div>
+                <span class="orangeCategory">HR</span>
+                <div class="titleAndText">
+                  <h4 class="title">les taches faisables</h4>
+                  <div class="text">Plan des taches faisables</div>
+                </div>
+
+                <div id="taskProgress_68785335099" class="taskProgress">
+                  <div class="progressBar">
+                    <div
+                      class="progressBar-giov"
+                      id="giov68785335099"
+                      style="width: 100%"
+                    ></div>
+                  </div>
+                  <span class="progressBar-text" id="giov-text68785335099"
+                    >2/2 Done</span
+                  >
+                </div>
+
+                <div class="User-Priority" id="User-Priority">
+                  <div class="contactsIn-Task" id="contacts68785335099"></div>
+
+                  <div class="priorityFirst">
+                    <img src="assets/icon/prioMedium.png" alt="" />
+                  </div>
+                </div>
+              </div>
+              <div
+                onclick="checkDevice()"
+                draggable="true"
+                ondragstart="startDragging(762974415290)"
+                class="todo"
+                id="762974415290"
+              >
+                <div id="taskMenu-762974415290" class="taskMenu d-none">
+                  <div
+                    ontouchstart="showDetailWindow(762974415290)"
+                    class="taskMenu-edit"
+                  >
+                    Edit
+                  </div>
+                  <div id="touch-move-762974415290" class="taskMenu-move">
+                    Move to:
+                  </div>
+
+                  <div
+                    ontouchstart="touchMoveTask(762974415290, 'toDo')"
+                    class="taskMenu-move-entry"
+                  >
+                    To do
+                  </div>
+
+                  <div
+                    ontouchstart="touchMoveTask(762974415290, 'inProgress')"
+                    class="taskMenu-move-entry"
+                  >
+                    In Progress
+                  </div>
+
+                  <div
+                    ontouchstart="touchMoveTask(762974415290, 'awaitingFeedback')"
+                    class="taskMenu-move-entry"
+                  >
+                    Awaiting Feedback
+                  </div>
+                </div>
+                <span class="purpleCategory">Sales</span>
+                <div class="titleAndText">
+                  <h4 class="title">SO ist das Leben</h4>
+                  <div class="text">ja das wieß ich</div>
+                </div>
+
+                <div
+                  id="taskProgress_762974415290"
+                  class="taskProgress"
+                ></div>
+
+                <div class="User-Priority" id="User-Priority">
+                  <div class="contactsIn-Task" id="contacts762974415290">
+                    <div style="background-color: #e36d6f" class="user">BK</div>
+                  </div>
+
+                  <div class="priorityFirst">
+                    <img src="assets/icon/prioUrgent.png" alt="" />
+                  </div>
+                </div>
+              </div>
+              <div
+                onclick="checkDevice()"
+                draggable="true"
+                ondragstart="startDragging(974125127815)"
+                class="todo"
+                id="974125127815"
+              >
+                <div id="taskMenu-974125127815" class="taskMenu d-none">
+                  <div
+                    ontouchstart="showDetailWindow(974125127815)"
+                    class="taskMenu-edit"
+                  >
+                    Edit
+                  </div>
+                  <div id="touch-move-974125127815" class="taskMenu-move">
+                    Move to:
+                  </div>
+
+                  <div
+                    ontouchstart="touchMoveTask(974125127815, 'toDo')"
+                    class="taskMenu-move-entry"
+                  >
+                    To do
+                  </div>
+
+                  <div
+                    ontouchstart="touchMoveTask(974125127815, 'inProgress')"
+                    class="taskMenu-move-entry"
+                  >
+                    In Progress
+                  </div>
+
+                  <div
+                    ontouchstart="touchMoveTask(974125127815, 'awaitingFeedback')"
+                    class="taskMenu-move-entry"
+                  >
+                    Awaiting Feedback
+                  </div>
+                </div>
+                <span class="orangeCategory">Travailleur</span>
+                <div class="titleAndText">
+                  <h4 class="title">surnoix</h4>
+                  <div class="text">la maladie d amour</div>
+                </div>
+
+                <div id="taskProgress_974125127815" class="taskProgress">
+                  <div class="progressBar">
+                    <div
+                      class="progressBar-giov"
+                      id="giov974125127815"
+                      style="width: 100%"
+                    ></div>
+                  </div>
+                  <span class="progressBar-tex" id="giov-text974125127815"
+                    >0/4 Done</span
+                  >
+                </div>
+
+                <div class="User-Priority" id="User-Priority">
+                  <div class="contactsIn-Task" id="contacts974125127815">
+                    <div style="background-color: #c6d248" class="user">KH</div>
+
+                    <div style="background-color: #1bf0b9" class="user">LS</div>
+
+                    <div style="background-color: #5d0f86" class="user">MH</div>
+
+                    <div style="background-color: #a16e7d" class="user">D</div>
+
+                    <div style="background-color: #e36d6f" class="user">BK</div>
+                  </div>
+
+                  <div class="priorityFirst">
+                    <img src="assets/icon/prioLow.png" alt="" />
+                  </div>
+                </div>
+              </div>
+              <div id="drop_template_done" class="drag-template d-none"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

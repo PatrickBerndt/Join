@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Join</title>
+    <link
+      rel="shortcut icon"
+      href="assets/icon/favicon.png"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/contact.css" />
+    <link rel="stylesheet" href="css/summary.css" />
+    <link rel="stylesheet" href="css/login.css" />
+    <link rel="stylesheet" href="css/addTask.css" />
+    <link rel="stylesheet" href="css/board.css" />
+    <link rel="stylesheet" href="css/help.css" />
+
+    <script src="mini_backend.js"></script>
+    <script src="script.js"></script>
+    <script src="js/contact.js"></script>
+    <script src="js/login.js"></script>
+    <script src="js/board.js"></script>
+    <script src="js/addTask.js"></script>
+    <script src="js/template.js"></script>
+  </head>
+  <body onload="init()">
+    <header>
+      <img
+        class="head-logo"
+        onclick="window.location.href='summary.html';"
+        src="assets/icon/logoSmallWhite.png"
+      />
+      <div class="head-right">
+        <p>Kanban Project Management Tool</p>
+        <img
+          src="assets/icon/help.png"
+          style="cursor: pointer"
+          onclick="window.location.href='help.html';"
+        />
+        <div id="initialHeader" class="initialHeader dNone"></div>
+      </div>
+    </header>
+    <nav>
+      <a class="navLink activ" href="#"
+        ><img src="assets/icon/summary.png" />
+        <p>Summary</p></a
+      >
+      <a class="navLink" href="board.html"
+        ><img src="assets/icon/board.png" />
+        <p>Board</p></a
+      >
+      <a class="navLink" href="addTask.html"
+        ><img src="assets/icon/addTask.png" />
+        <p>Add Task</p></a
+      >
+      <a class="navLink" href="contacts.html"
+        ><img src="assets/icon/contacts.png" />
+        <p>Contacts</p></a
+      >
+    </nav>
+    <main>
+      <div class="main-right">
+        <!-- Main Right Header Start -->
+        <div class="main-right-header">
+          <h1 id="greeting"></h1>
+        </div>
+        <!-- Main Right Header End -->
+
+        <!-- Main Right Tasks Start -->
+        <div class="main-right-tasks">
+          <!-- Main Top Start -->
+          <div class="greet">
+            <b>
+              Good morning,
+              <a id="m" style="color: #4589ff">Patrick Berndt</a>
+            </b>
+          </div>
+
+          <div class="main-right-top">
+            <div class="task-urgent cursor">
+              <div class="task-urgent-left">
+                <!-- TODO Add Anchor Tag with the specific index.html that navigates the user  -->
+                <div class="task-urgent-left-top">
+                  <img src="assets/icon/TaskUrgent.png" alt="" />
+                  <h2>1</h2>
+                </div>
+                <p>Tasks Urgent</p>
+              </div>
+              <div class="verticalLine">
+                <img src="assets/icon/Vector 5.png" alt="" />
+              </div>
+
+              <div class="task-urgent-right">
+                <h2>October 16, 2022</h2>
+                <p>Upcoming Deadline</p>
+              </div>
+            </div>
+
+            <a href="board.html">
+              <div class="task-todo task-general cursor">
+                <!-- TODO Add Anchor Tag with the specific index.html that navigates the user  -->
+                <div class="task-todo-top">
+                  <img src="assets/icon/TaskBoard.png" alt="" />
+                  <h2>1</h2>
+                </div>
+                <p>Tasks To-do</p>
+              </div>
+            </a>
+          </div>
+          <!-- Main Top End -->
+
+          <!-- Main Bottom Start -->
+          <div class="main-right-bottom">
+            <a href="board.html">
+              <div class="task-board task-general cursor">
+                <!-- TODO Add Anchor Tag with the specific index.html that navigates the user  -->
+                <div class="task-todo-top">
+                  <img src="assets/icon/TaskBoard.png" alt="" />
+                  <h2>1</h2>
+                </div>
+                <p>Tasks on board</p>
+              </div>
+            </a>
+            <a href="board.html">
+              <div class="task-board task-general cursor">
+                <!-- TODO Add Anchor Tag with the specific index.html that navigates the user  -->
+                <div class="task-todo-top">
+                  <img src="assets/icon/TaskInProgress.png" alt="" />
+                  <h2>1</h2>
+                </div>
+                <p>Task in Progress</p>
+              </div>
+            </a>
+            <a href="board.html">
+              <div class="task-progress task-general cursor">
+                <!-- TODO Add Anchor Tag with the specific index.html that navigates the user  -->
+                <div class="task-todo-top">
+                  <img src="assets/icon/TaskAwaitingFeedback.png" alt="" />
+                  <h2>1</h2>
+                </div>
+                <p>Awaiting Feedback</p>
+              </div>
+            </a>
+            <a href="board.html">
+              <div class="task-feedback task-general cursor">
+                <!-- TODO Add Anchor Tag with the specific index.html that navigates the user to his/her desired page  -->
+                <div class="task-todo-top">
+                  <img src="assets/icon/TaskDone.png" alt="" />
+                  <h2>1</h2>
+                </div>
+                <p>Tasks done</p>
+              </div>
+            </a>
+          </div>
+        </div>
+        <!-- Main Bottom Start -->
+        <!-- Main Right Tasks End -->
+
+        <div class="main-right-tasks-information"></div>
+      </div>
+    </main>
+  </body>
+</html>
