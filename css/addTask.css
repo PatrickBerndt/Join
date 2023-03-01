@@ -7,16 +7,39 @@
     left: 232px;
     margin-left: 88px;
     margin-top: 40px;
+    gap: 10px;
+}
+.addTaskMain h4{
+    margin: 0;
+    color: #42526E;
 }
 .enterTitleInput{
     background-color: transparent;
     border: transparent ;
     height: 74px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgb(214, 214, 214);
 }
 .enterTitleInput::placeholder{
     font-size: 30px;
     color: lightgrey;
     padding-left: 20px;
+}
+.assignTo{
+    position: relative;
+    margin-top: 30px;
+    width: 100%;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgb(214, 214, 214);
+}
+.dropToggle{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+.flip{
+    transform: rotate(180deg);
 }
 .priorityBtn{
     gap: 10px;
@@ -29,7 +52,66 @@
     box-shadow: 0px 0px 2px 0px rgb(0, 0, 0, 0.2);
     border-radius: 10px;
     font-size: 18px;
+    cursor: pointer;
 }
 .priorityBtn img{
     margin-left: 10px;
+}
+.dueDateInput{    
+    background-color: transparent;
+    border: transparent ;
+    height: 40px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgb(214, 214, 214);
+    color: lightgray;
+    padding-left: 20px;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+    color: rgba(0, 0, 0, 0);
+    opacity: 1;
+    display: block;
+    background: url(/assets/icon/calendar.png) no-repeat;
+    width: 25px;
+    height: 20px;
+    border-width: thin
+}
+.addCategory{
+    position: relative;
+    margin-top: 30px;
+    width: 100%;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgb(214, 214, 214);
+}
+#description{
+    width: 422px;
+    height: 103px;
+    background: #FFFFFF;
+    border: 1px solid #D1D1D1;
+    border-radius: 0px 10px 10px 10px;
+}
+.subtaskField{
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgb(214, 214, 214);
+}
+.addSubtaskPlus{
+cursor: pointer;
+justify-self: end;
+}
+.addedSubtask{
+    background-color: transparent;
+    border: transparent ;
+    height: 30px;
+    padding-bottom: 10px;
+    width: calc(100% - 38px);
+}
+.addedSubtask::placeholder{
+    font-size: 19px;
+    color: lightgrey;
+    padding-left: 20px;
+}
+.listAssign{
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 20px;
 }
