@@ -115,3 +115,43 @@ justify-self: end;
     justify-content: space-between;
     padding: 5px 20px;
 }
+.listNewCategory img{
+    margin: 0 10px ;
+}
+.newCat{
+    font-weight: bold;
+    cursor: pointer;
+}
+.newCatInput{
+    height: 30px;
+    width: 80%;
+}
+.colorPallet{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 100px;
+}
+.singleColor{
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.lightblue{
+    background-color: lightskyblue;
+}
+.lightred{
+    background-color: lightcoral;
+}
+.lightgreen{
+    background-color: rgb(137, 240, 128);
+}
+.lightorange{
+    background-color: rgb(240, 195, 128);
+}
+.lightpurple{
+    background-color: rgb(167, 128, 240);
+}
+.lightgray{
+    background-color: rgb(170, 167, 167);
+}

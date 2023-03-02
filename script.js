@@ -14,6 +14,7 @@ async function init(c) {
     await downloadFromServer();
     users = JSON.parse(backend.getItem('users')) || [];
     tasks = JSON.parse(backend.getItem('tasks')) || [];
+    categorys = JSON.parse(backend.getItem('categorys')) || [];
     getLetters();
     if(c == 'contact'){
         initContacts()

@@ -97,7 +97,7 @@ a{
     margin-left: 20%;
 }
 .activ{
-    background-color: #d2e3ff;
+    background-color: #d2e3ff !important;
     border-radius: 10px;
 }
 
