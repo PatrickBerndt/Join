@@ -41,7 +41,7 @@
         <input class="enterTitleInput" id="enterTitleInput" type="text" placeholder="Enter a title">
 
         <div class="assignTo" id="assignTo">
-            <div style="padding-left: 20px;">Select contacts to assign </div><img class="dropToggle " onclick="toggleAssign()" src="assets/icon/dropArrow.png">
+            <div style="padding-left: 20px;">Select contacts to assign </div><img id="assignToImg" class="dropToggle " onclick="toggleAssign()" src="assets/icon/dropArrow.png">
         </div>
         <div class="dNone" id="assignToContent"></div>
 
@@ -50,7 +50,7 @@
 
         <h4>Category</h4>
         <div class="addCategory" id="addCategory">
-            <div style="padding-left: 20px;">Select task category </div><img class="dropToggle " onclick="toggleCategory()" src="assets/icon/dropArrow.png">
+            <div style="padding-left: 20px;">Select task category </div><img id="addCategoryImg" class="dropToggle " onclick="toggleCategory()" src="assets/icon/dropArrow.png">
         </div>
         <div class="dNone" id="addCategoryContent"></div>
 
@@ -65,8 +65,8 @@
 
         <h4>Subtask</h4>
         <div class="subtaskField">
-            <input class="addedSubtask" placeholder="Add new subtask" type="text">
-            <img class="addSubtaskPlus" src="assets/icon/puls-blue.png">
+            <input id="addSubToList" class="addedSubtask" placeholder="Add new subtask" type="text">
+            <img class="addSubtaskPlus" onclick="addSubToList()" src="assets/icon/puls-blue.png">
         </div>
         <div  id="addedSubtask"></div>
     </div>

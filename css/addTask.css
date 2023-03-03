@@ -40,6 +40,7 @@
 }
 .flip{
     transform: rotate(180deg);
+    padding-top: 4px;
 }
 .priorityBtn{
     gap: 10px;
@@ -114,12 +115,16 @@ justify-self: end;
     display: flex;
     justify-content: space-between;
     padding: 5px 20px;
+    border-radius: 15px;
+    cursor: pointer;
 }
 .listNewCategory img{
     margin: 0 10px ;
+    cursor: pointer;
 }
 .newCat{
     font-weight: bold;
+    color: #42526E;
     cursor: pointer;
 }
 .newCatInput{
@@ -136,6 +141,9 @@ justify-self: end;
     width: 15px;
     border-radius: 50%;
     cursor: pointer;
+}
+.colorActiv{
+    border: 2px solid black;
 }
 .lightblue{
     background-color: lightskyblue;

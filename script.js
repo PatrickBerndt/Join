@@ -1,6 +1,6 @@
 let users = [];
 let tasks = [];
-
+let categorys=[];
 
 function stopAmimation(){
     setTimeout(animation,550);
