@@ -1,13 +1,18 @@
+.mainWrapper{
+    
+}
 .addTaskMain{
-    height: calc(100% - 97px);
-    display: flex;
-    flex-direction: column;
     position: fixed;
     top: 97px;
+    bottom: 0;
     left: 232px;
+    display: flex;
+    flex-direction: column;
     margin-left: 88px;
     margin-top: 40px;
+    padding-right: 20px;
     gap: 10px;
+    overflow-y: scroll;
 }
 .addTaskMain h4{
     margin: 0;
@@ -16,7 +21,7 @@
 .enterTitleInput{
     background-color: transparent;
     border: transparent ;
-    height: 74px;
+    min-height: 74px;
     padding-bottom: 10px;
     border-bottom: 1px solid rgb(214, 214, 214);
 }
@@ -61,7 +66,7 @@
 .dueDateInput{    
     background-color: transparent;
     border: transparent ;
-    height: 40px;
+    min-height: 40px;
     padding-bottom: 10px;
     border-bottom: 1px solid rgb(214, 214, 214);
     color: lightgray;
@@ -85,10 +90,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 #description{
     width: 422px;
-    height: 103px;
+    min-height: 103px;
     background: #FFFFFF;
     border: 1px solid #D1D1D1;
     border-radius: 0px 10px 10px 10px;
+    font-size: 20px;
 }
 .subtaskField{
     display: flex;

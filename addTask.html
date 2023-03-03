@@ -38,7 +38,7 @@
         <a class="navLink" href="contacts.html"><img src="assets/icon/contacts.png"><p>Contacts</p></a>
     </nav>
     <div class="addTaskMain">
-        <input class="enterTitleInput" id="enterTitleInput" type="text" placeholder="Enter a title">
+        <input class="enterTitleInput" required id="enterTitleInput" type="text" placeholder="Enter a title">
 
         <div class="assignTo" id="assignTo">
             <div style="padding-left: 20px;">Select contacts to assign </div><img id="assignToImg" class="dropToggle " onclick="toggleAssign()" src="assets/icon/dropArrow.png">
@@ -46,7 +46,7 @@
         <div class="dNone" id="assignToContent"></div>
 
         <h4>Due date</h4>
-        <input class="dueDateInput" type="date" name="" id="dueDate">
+        <input class="dueDateInput" required type="date" name="" id="dueDate">
 
         <h4>Category</h4>
         <div class="addCategory" id="addCategory">
@@ -61,7 +61,7 @@
         </div>
 
         <h4>Description</h4>
-        <textarea  name="" id="description" cols="30" rows="10"></textarea>
+        <textarea  required name="" id="description" ></textarea>
 
         <h4>Subtask</h4>
         <div class="subtaskField">

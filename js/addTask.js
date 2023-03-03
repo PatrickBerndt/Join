@@ -19,14 +19,26 @@ function toggleCategory(){
 
 
 
-function addTask(){
+async function addTask(){
+    await isChecked();
     let title = document.getElementById('enterTitleInput').value;
-    let assingTo = document.getElementById('contactEmail').value;
     let dueDate = document.getElementById('dueDate').value;
     let category = categorys[selectedCategorys];
     let description = document.getElementById('description').value;
-    let subtask = document.getElementById('contactTel').value;
-    let task = {'title':title,'assingTo':assingTo,'dueDate':dueDate,'date':date,'category':category,'prio':taskPriority,'description':description,'subtask':subtask,'position':position,};
+    let date = new Date;
+    let task = {'title':title,'assingTo':assignToList,'dueDate':dueDate,'date':date,'category':category,'prio':taskPriority,'description':description,'subtask':subTasks,'position':'',};
+    tasks.push(task);
+    await backend.setItem('tasks', JSON.stringify(tasks));
+    window.open("board.html", "_self")
+}
+
+function isChecked(){
+    for (let d = 0; d < users.length; d++) {
+        if(document.getElementById(`isChecked${d}`).checked){
+            assignToList.push(d);
+        }
+    }
+    return;
 }
 
 function addCategory(i){
@@ -78,10 +90,12 @@ function listAssignTo(){
     for (let i = 0; i < users.length; i++) {
         const user = users[i];
         document.getElementById('assignToContent').innerHTML += /*html*/`
-        <div class="listAssign"><div>${user['firstName']+' '+user['lastName']}</div><input type="checkbox" name="" id=""></div>
+        <div class="listAssign"><div>${user['firstName']+' '+user['lastName']}</div><input type="checkbox" name="" id="isChecked${i}"></div>
         `;
     }
 }
+
+
 
 function listCategory(){
     document.getElementById('addCategoryContent').innerHTML ='';
@@ -106,11 +120,9 @@ function  setIsActiv(){
     document.getElementById('low').classList.remove('activ')
     if(taskPriority == 'high'){
         document.getElementById('high').classList.add('activ')
-    }
-    if(taskPriority == 'mid'){
+    }else if(taskPriority == 'mid'){
         document.getElementById('mid').classList.add('activ')
-    }
-    if(taskPriority == 'low'){
+    }else if(taskPriority == 'low'){
         document.getElementById('low').classList.add('activ')
     }
 }
@@ -126,7 +138,7 @@ function renderSubTask(){
     document.getElementById('addedSubtask').innerHTML='';
     for (let i = 0; i < subTasks.length; i++) {
         const subTask = subTasks[i];
-        document.getElementById('addedSubtask').innerHTML=/*html*/`
+        document.getElementById('addedSubtask').innerHTML +=/*html*/`
         <ul>${subTask}</ul>
         `;
     }
