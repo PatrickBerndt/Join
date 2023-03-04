@@ -27,59 +27,21 @@
     <script src="js/template.js"></script>
   </head>
   <body onload="init('contact'); renderHeadInitials();">
-    <div
-      onclick="toggleAddContact()"
-      class="addNewContact dNone"
-      id="addNewContact"
-    >
+    <div onclick="toggleAddContact()" class="addNewContact dNone" id="addNewContact">
       <div class="newContactBox" onclick="event.stopPropagation()">
         <div class="newContactHead">
-          <img
-            onclick="toggleAddContact()"
-            class="closeTag"
-            src="assets/icon/closeWhite.png"
-          />
+          <img onclick="toggleAddContact()" class="closeTag" src="assets/icon/closeWhite.png">
           <img src="assets/icon/logoSmallWhite.png" />
           <h3>Add contact</h3>
           <p>Tasks are better with a team!</p>
         </div>
         <form onsubmit="addContact();return false;" class="addNewInputBox">
           <div class="avatarBox" id="avatarBox">
-            <img src="assets/icon/avatar.png" />
+            <img src="assets/icon/avatar.png" >
           </div>
-          <input
-            id="contactName"
-            type="text"
-            placeholder="Name"
-            required
-            style="
-              background-image: url(assets/icon/name.png);
-              background-repeat: no-repeat;
-              background-position: center right 14px;
-            "
-          />
-          <input
-            id="contactEmail"
-            type="email"
-            placeholder="E-Mail"
-            required
-            style="
-              background-image: url(assets/icon/email.png);
-              background-repeat: no-repeat;
-              background-position: center right 14px;
-            "
-          />
-          <input
-            id="contactTel"
-            type="tel"
-            placeholder="Phone"
-            required
-            style="
-              background-image: url(assets/icon/phone.png);
-              background-repeat: no-repeat;
-              background-position: center right 14px;
-            "
-          />
+          <input id="contactName" type="text" placeholder="Name" required style="background-image: url(assets/icon/name.png); background-repeat: no-repeat; background-position: center right 14px;">
+          <input id="contactEmail" type="email" placeholder="E-Mail" required style="background-image: url(assets/icon/email.png); background-repeat: no-repeat; background-position: center right 14px;">
+          <input id="contactTel" type="tel" placeholder="Phone" required style="background-image: url(assets/icon/phone.png); background-repeat: no-repeat; background-position: center right 14px;">
           <button class="btn">Create contact</button>
         </form>
       </div>
@@ -90,11 +52,7 @@
       id="editContact"
     ></div>
     <header>
-      <img
-        class="head-logo"
-        onclick="window.location.href='summary.html';"
-        src="assets/icon/logoSmallWhite.png"
-      />
+      <img class="head-logo" onclick="window.location.href='summary.html';" src="assets/icon/logoSmallWhite.png">
       <div class="head-right">
         <p>Kanban Project Management Tool</p>
         <img
@@ -106,22 +64,10 @@
       </div>
     </header>
     <nav>
-      <a class="navLink" href="summary.html"
-        ><img src="assets/icon/summary.png" />
-        <p>Summary</p></a
-      >
-      <a class="navLink" href="board.html"
-        ><img src="assets/icon/board.png" />
-        <p>Board</p></a
-      >
-      <a class="navLink" href="addTask.html"
-        ><img src="assets/icon/addTask.png" />
-        <p>Add Task</p></a
-      >
-      <a class="navLink activ" href="#"
-        ><img src="assets/icon/contacts.png" />
-        <p>Contacts</p></a
-      >
+      <a class="navLink" href="summary.html"><img src="assets/icon/summary.png"><p>Summary</p></a>
+      <a class="navLink" href="board.html"><img src="assets/icon/board.png"><p>Board</p></a>
+      <a class="navLink" href="addTask.html"><img src="assets/icon/addTask.png"><p>Add Task</p></a>
+      <a class="navLink activ" href="#"><img src="assets/icon/contacts.png"><p>Contacts</p></a>
     </nav>
 
     <button class="btn btn-posRB" onclick="toggleAddContact()">

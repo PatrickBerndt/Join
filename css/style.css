@@ -9,9 +9,6 @@ input{
     border: transparent;
     font-size: 19px;
 }
-input:focus{
-    border: transparent;
-}
 header{
     height: 97px;
     width: 100%;
@@ -100,4 +97,6 @@ a{
     background-color: #d2e3ff !important;
     border-radius: 10px;
 }
-
+.m0{
+    margin: 0 !important;
+}

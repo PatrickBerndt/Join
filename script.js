@@ -18,8 +18,10 @@ async function init(c) {
     getLetters();
     if(c == 'contact'){
         initContacts()
+    }else if(c == 'board'){
+        updateHTML();
     }
-    renderHeadInitials()
+    /*renderHeadInitials()*/
 }
 
 function initContacts(){

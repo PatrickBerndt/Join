@@ -25,8 +25,7 @@ async function addTask(){
     let dueDate = document.getElementById('dueDate').value;
     let category = categorys[selectedCategorys];
     let description = document.getElementById('description').value;
-    let date = new Date;
-    let task = {'title':title,'assingTo':assignToList,'dueDate':dueDate,'date':date,'category':category,'prio':taskPriority,'description':description,'subtask':subTasks,'position':'',};
+    let task = {'title':title,'assingTo':assignToList,'dueDate':dueDate,'category':category,'prio':taskPriority,'description':description,'subtask':subTasks,'position':'toDo',};
     tasks.push(task);
     await backend.setItem('tasks', JSON.stringify(tasks));
     window.open("board.html", "_self")
