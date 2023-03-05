@@ -11,7 +11,7 @@ function updateHTML(){
         let prio = task['prio']
         let pos = task['position']
         document.getElementById(pos).innerHTML += generateTask(i,title,description,category,prio);
-        generateAssainTos(assignTo);
+        generateAssainTos(i,assignTo);
     }
 }
 
@@ -47,27 +47,3 @@ function savePosition(i,pos){
     save();
 }
 
-function generateAssainTos(assignTo){
-    document.getElementById('boardCardInitials').innerHTML ='';
-    for (let t = 0; t < assignTo.length; t++) {
-        const position = assignTo[t];
-        document.getElementById('boardCardInitials').innerHTML +=`<div class="boardCardAvatar" style="background-color: ${users[position]['color']};">${users[position]['initial']}</div>`;
-    }
-
-}
-function generateTask(i,title,description,category,prio){
-    let prioPic ='';
-    if(prio=='hight'){prioPic='assets/icon/prioUrgent.png'}else if(prio=='mid'){prioPic='assets/icon/prioMedium.png'}else{prioPic='assets/icon/prioLow.png'}
-
-    return /*html*/`
-    <div class="boardCard" id="${i}" draggable="true" ondragstart="drag(event)">
-        <div class="boardCardCategory ${category['categoryColor']}">${category['categoryTitle']}</div>
-        <div class="boardCardTitle"><h5>${title}</h5></div>
-        <div class="boardCardDiscription">${description}</div>
-        <div class="boardCardInitialArea">
-          <div id="boardCardInitials" class="boardCardInitials"></div>
-          <div class="boardCardPrio"><img src='${prioPic}'></div>
-        </div>
-      </div>
-      `;
-}

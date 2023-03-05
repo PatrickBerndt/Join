@@ -52,3 +52,29 @@ function editBoxTemplate(i,tel,firstName,lastName,email,initial,color){
     
     `;
 }
+
+function generateAssainTos(i,assignTo){
+    document.getElementById(`boardCardInitials${i}`).innerHTML ='';
+    for (let t = 0; t < assignTo.length; t++) {
+        const position = assignTo[t];
+        document.getElementById(`boardCardInitials${i}`).innerHTML +=`<div class="boardCardAvatar" style="background-color: ${users[position]['color']};">${users[position]['initial']}</div>`;
+    }
+
+}
+
+function generateTask(i,title,description,category,prio){
+    let prioPic ='';
+    if(prio=='high'){prioPic='assets/icon/prioUrgent.png'}else if(prio=='mid'){prioPic='assets/icon/prioMedium.png'}else{prioPic='assets/icon/prioLow.png'}
+
+    return /*html*/`
+    <div class="boardCard" id="${i}" draggable="true" ondragstart="drag(event)">
+        <div class="boardCardCategory ${category['categoryColor']}">${category['categoryTitle']}</div>
+        <div class="boardCardTitle"><h5>${title}</h5></div>
+        <div class="boardCardDiscription">${description}</div>
+        <div class="boardCardInitialArea">
+          <div id="boardCardInitials${i}" class="boardCardInitials"></div>
+          <div class="boardCardPrio"><img src='${prioPic}'></div>
+        </div>
+      </div>
+      `;
+}
