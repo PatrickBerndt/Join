@@ -1,6 +1,7 @@
 let users = [];
 let tasks = [];
 let categorys=[];
+let currentUser='';
 
 function stopAmimation(){
     setTimeout(animation,550);
@@ -15,13 +16,16 @@ async function init(c) {
     users = JSON.parse(backend.getItem('users')) || [];
     tasks = JSON.parse(backend.getItem('tasks')) || [];
     categorys = JSON.parse(backend.getItem('categorys')) || [];
+    currentUser = JSON.parse(backend.getItem('currentUser')) || [];
     getLetters();
     if(c == 'contact'){
-        initContacts()
+        initContacts();
     }else if(c == 'board'){
         updateHTML();
+    }else if(c == 'summary'){
+        greetUser();
     }
-    /*renderHeadInitials()*/
+    renderHeadInitials();
 }
 
 function initContacts(){
