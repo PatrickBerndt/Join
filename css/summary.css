@@ -20,6 +20,7 @@ main h2 {
   background-color: black;
 }
 .greetName{
+  margin-left: 10px;
   color: #4589ff;
 }
 
@@ -64,6 +65,7 @@ main h2 {
   padding: 40px;
 }
 .task-urgent:hover {
+  
   background-color: #4589ff;
   color:#fff ;
   box-shadow: 0px 0px 4px rgb(0 0 0 / 16%);
@@ -113,7 +115,7 @@ main h2 {
   justify-content: center;
   align-items: center;
 }
-.verticalLine img {
+.verticalLine{
   flex-direction: column;
   position: relative;
   justify-content: center;

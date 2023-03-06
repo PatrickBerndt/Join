@@ -9,20 +9,23 @@ async function logIn(){
     for (let i = 0; i < users.length; i++) {
         const user = users[i];
         if ((user['email'] == loginEmail ) && (user['password'] == loginPassword )){
-            
-            if((document.getElementById('rememberMe').checked) == true){
-                localStorage.setItem('user',loginEmail);
-                localStorage.setItem('PW',loginPassword);
-                localStorage.setItem('remember',true);
-            }
-            else{
-                localStorage.setItem('user','');
-                localStorage.setItem('PW','');
-                localStorage.setItem('remember',false);
-            }
+            checkRememberMe();
             await backend.setItem('currentUser', JSON.stringify({'currentUser':i}));
             window.location.href='summary.html';
         }
+    }
+}
+
+function checkRememberMe(){
+    if((document.getElementById('rememberMe').checked) == true){
+        localStorage.setItem('user',loginEmail);
+        localStorage.setItem('PW',loginPassword);
+        localStorage.setItem('remember',true);
+    }
+    else{
+        localStorage.setItem('user','');
+        localStorage.setItem('PW','');
+        localStorage.setItem('remember',false);
     }
 }
 

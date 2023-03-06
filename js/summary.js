@@ -3,11 +3,12 @@ function greetUser(){
     if(activUser !== ''){
         let user = users[activUser];
         document.getElementById('greet').innerHTML = getGeetingTime();
-        document.getElementById('greetName').innerHTML = `, ${user['firstName']+' '+user['lastName']}`;
-
+        document.getElementById('greetName').innerHTML = `${user['firstName']+' '+user['lastName']}`;
+        document.getElementById('greet').innerHTML +=`,`;
     }else{
         document.getElementById('greet').innerHTML = getGeetingTime();
     }
+    checkPosition();
 }
 
 function getGeetingTime(){
@@ -26,3 +27,24 @@ function getGeetingTime(){
         return `Working late`;
     } 
 }
+
+function checkPosition(){
+        let inToDo=0;
+        let inInProgress=0;
+        let inAwaitingFeedback=0;
+        let inDone=0;
+        let areUrgent=0;
+    for (let i = 0; i < tasks.length; i++) {
+        const task = tasks[i];
+        if(task['position']=='toDo'){inToDo++}
+        if(task['position']=='inProgress'){inInProgress++}
+        if(task['position']=='feedback'){inAwaitingFeedback++}
+        if(task['position']=='done'){inDone++}
+        if(task['prio']=='high'){areUrgent++}
+    }
+    renderNumbersSummary(inToDo,inInProgress,inAwaitingFeedback,inDone,areUrgent);
+
+    
+}
+
+

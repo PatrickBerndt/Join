@@ -78,3 +78,12 @@ function generateTask(i,title,description,category,prio){
       </div>
       `;
 }
+
+function renderNumbersSummary(inToDo,inInProgress,inAwaitingFeedback,inDone,areUrgent){
+    document.getElementById('tasksOnBoard').innerHTML =`${tasks.length}`;
+    document.getElementById('summaryTodo').innerHTML =`${inToDo}`;
+    document.getElementById('tasksInProgress').innerHTML =`${inInProgress}`;
+    document.getElementById('tasksInFeedback').innerHTML =`${inAwaitingFeedback}`;
+    document.getElementById('tasksDone').innerHTML =`${inDone}`;
+    document.getElementById('tasksUrgent').innerHTML =`${areUrgent}`;
+}
