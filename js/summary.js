@@ -43,8 +43,27 @@ function checkPosition(){
         if(task['prio']=='high'){areUrgent++}
     }
     renderNumbersSummary(inToDo,inInProgress,inAwaitingFeedback,inDone,areUrgent);
-
-    
+    getDeadline();
 }
 
-
+function getDeadline(){
+    let datesToSort = [];
+    const d = new Date();
+    let year = d.getFullYear();
+    let month = ('0'+(d.getMonth()+1)).slice(-2);
+    let day = ('0'+d.getDate()).slice(-2);
+    let currentDate = (year+'-'+ month +`-`+ day)
+    for (let d = 0; d < tasks.length; d++) {
+        const task = tasks[d];
+        datesToSort.push(task['dueDate']);
+    }
+    datesToSort.sort();
+    while(datesToSort[0] < currentDate ){
+        datesToSort = datesToSort.slice(1);
+    }
+    if(datesToSort != []){
+       document.getElementById('upcomingDeadline').innerHTML =`${datesToSort[0]}`; 
+    }else{
+        document.getElementById('upcomingDeadline').innerHTML =`No`; 
+    }
+}
