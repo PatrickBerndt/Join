@@ -101,8 +101,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     border-bottom: 1px solid rgb(214, 214, 214);
 }
 .addSubtaskPlus{
-cursor: pointer;
-justify-self: end;
+    cursor: pointer;
+    justify-self: end;
 }
 .addedSubtask{
     background-color: transparent;

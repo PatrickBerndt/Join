@@ -62,12 +62,26 @@ function generateAssainTos(i,assignTo){
 
 }
 
+function generateAssainTosOverlay(i,assignTo){
+    document.getElementById(`overlayCardInitials`).innerHTML ='';
+    for (let t = 0; t < assignTo.length; t++) {
+        const position = assignTo[t];
+        document.getElementById(`overlayCardInitials`).innerHTML +=/*html*/`
+        <div class="overlayCardInitials">
+        <div class="overlayCardAvatar" style="background-color: ${users[position]['color']};">${users[position]['initial']}</div>
+        <div class="overlayCardName">${users[position]['firstName']+' '+users[position]['lastName']}</div>        
+        </div>
+        `;
+    }
+
+}
+
 function generateTask(i,title,description,category,prio){
     let prioPic ='';
     if(prio=='high'){prioPic='assets/icon/prioUrgent.png'}else if(prio=='mid'){prioPic='assets/icon/prioMedium.png'}else{prioPic='assets/icon/prioLow.png'}
 
     return /*html*/`
-    <div class="boardCard" id="${i}" draggable="true" ondragstart="drag(event)">
+    <div class="boardCard" id="${i}" draggable="true" ondragstart="drag(event)" onclick="toggleOverlay(${i})">
         <div class="boardCardCategory ${category['categoryColor']}">${category['categoryTitle']}</div>
         <div class="boardCardTitle"><h5>${title}</h5></div>
         <div class="boardCardDiscription">${description}</div>

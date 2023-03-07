@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/addTask.css">
     <link rel="stylesheet" href="css/board.css">
-    <link rel="stylesheet" href="css/help.css">
   
     <script src="mini_backend.js"></script>
     <script src="script.js"></script>
@@ -26,6 +25,12 @@
   
   </head>
   <body onload="init('board')">
+
+    <div id="overlay" class="overlay dNone">
+      <div id="overlayCard" class="overlayCard">
+      </div>
+    </div>
+
     <header>
       <img class="head-logo" src="assets/icon/logoSmallWhite.png">
       <div class="head-right">
@@ -34,6 +39,7 @@
         <div id="initialHeader" class="initialHeader dNone"></div>
       </div>
     </header>
+    
     <nav>
       <a class="navLink" href="summary.html"><img src="assets/icon/summary.png" /><p>Summary</p></a>
       <a class="navLink activ" href="#"><img src="assets/icon/board.png" /><p>Board</p></a>

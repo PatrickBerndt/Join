@@ -19,16 +19,14 @@ async function init(c) {
     currentUser = JSON.parse(backend.getItem('currentUser')) || [];
     getLetters();
     if(c == 'contact'){
-        initContacts();
+        renderLetters();
     }else if(c == 'board'){
         updateHTML();
+        renderFullscreenView()
     }else if(c == 'summary'){
         greetUser();
     }
     renderHeadInitials();
 }
 
-function initContacts(){
-  renderLetters();
-}
 
