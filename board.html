@@ -26,10 +26,53 @@
   </head>
   <body onload="init('board')">
 
-    <div id="overlay" class="overlay dNone">
-      <div id="overlayCard" class="overlayCard">
+    <div id="overlay" class="overlay dNone" onclick="toggleOverlay()">
+      <div id="overlayCard" class="overlayCard" onclick="event.stopPropagation()">
       </div>
     </div>
+
+    <div id="overlayEdit" class="overlay dNone" onclick="toggleOverlayEdit()">
+      <div id="overlayCardEdit" class="overlayCard" onclick="event.stopPropagation()">
+        <div class="innerContentBoxOverlay">
+          <img class="overlayCardClose" src="assets/icon/clear.png" onclick="toggleOverlayEdit()">
+         
+
+          <input class="overlayEnterTitleInput" required id="enterTitleInput" type="text" placeholder="Enter a title">
+
+          <div class="overlayassignTo" id="assignTo">
+              <div style="padding-left: 20px;">Select contacts to assign </div><img id="assignToImg" class="dropToggle " onclick="toggleAssign()" src="assets/icon/dropArrow.png">
+          </div>
+          <div class="dNone" id="assignToContent"></div>
+
+          <h4>Due date</h4>
+          <input class="overlayDueDateInput" required type="date" name="" id="dueDate">
+
+          <h4>Category</h4>
+          <div class="overlayAddCategory" id="addCategory">
+              <div style="padding-left: 20px;">Select task category </div><img id="addCategoryImg" class="dropToggle " onclick="toggleCategory()" src="assets/icon/dropArrow.png">
+          </div>
+          <div class="dNone" id="addCategoryContent"></div>
+
+          <div class="priorityBtn">
+              <button id="high" onclick="setPrio('high')">Urgent <img src="assets/icon/prioUrgent.png"></button>
+              <button id="mid" onclick="setPrio('mid')">Medium <img src="assets/icon/prioMedium.png"></button>
+              <button id="low" onclick="setPrio('low')">Low <img src="assets/icon/prioLow.png"></button>  
+          </div>
+
+          <h4>Description</h4>
+          <textarea class="overlayTextArea" required name="" id="description" ></textarea>
+
+          <h4>Subtask</h4>
+          <div class="subtaskField">
+              <input id="addSubToList" class="addedSubtask" placeholder="Add new subtask" type="text">
+              <img class="addSubtaskPlus" onclick="addSubToList()" src="assets/icon/puls-blue.png">
+          </div>
+          <div  id="addedSubtask"></div>
+      </div>
+    </div>
+
+  </div>
+
 
     <header>
       <img class="head-logo" src="assets/icon/logoSmallWhite.png">

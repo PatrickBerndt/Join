@@ -10,13 +10,12 @@ function toggleAssign(){
     document.getElementById('assignToImg').classList.toggle('flip');
     listAssignTo();
 }
+
 function toggleCategory(){
     document.getElementById('addCategoryContent').classList.toggle('dNone');
     document.getElementById('addCategoryImg').classList.toggle('flip');
     listCategory();
 }
-
-
 
 
 async function addTask(){
@@ -93,8 +92,6 @@ function listAssignTo(){
         `;
     }
 }
-
-
 
 function listCategory(){
     document.getElementById('addCategoryContent').innerHTML ='';

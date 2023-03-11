@@ -81,7 +81,7 @@ function generateTask(i,title,description,category,prio){
     if(prio=='high'){prioPic='assets/icon/prioUrgent.png'}else if(prio=='mid'){prioPic='assets/icon/prioMedium.png'}else{prioPic='assets/icon/prioLow.png'}
 
     return /*html*/`
-    <div class="boardCard" id="${i}" draggable="true" ondragstart="drag(event)" onclick="toggleOverlay(${i})">
+    <div class="boardCard" id="${i}" draggable="true" ondragstart="drag(event)" ondrop="event.stopPropagation()" onclick="toggleOverlay(${i})">
         <div class="boardCardCategory ${category['categoryColor']}">${category['categoryTitle']}</div>
         <div class="boardCardTitle"><h5>${title}</h5></div>
         <div class="boardCardDiscription">${description}</div>
@@ -100,4 +100,23 @@ function renderNumbersSummary(inToDo,inInProgress,inAwaitingFeedback,inDone,areU
     document.getElementById('tasksInFeedback').innerHTML =`${inAwaitingFeedback}`;
     document.getElementById('tasksDone').innerHTML =`${inDone}`;
     document.getElementById('tasksUrgent').innerHTML =`${areUrgent}`;
+}
+
+function generateFullscreenView(title,description,category,dueDate,prioType,prio,prioPic,){
+    return /*html*/`
+    <div class="innerContentBoxOverlay">
+        <img class="overlayCardClose" src="assets/icon/clear.png" onclick="toggleOverlay()">
+        <img class="overlayCardEdit" src="assets/icon/editButton.png" onclick="toggleOverlaySwitch()">
+        <div class="overlayCardCategory ${category['categoryColor']}">${category['categoryTitle']}</div>
+        <div class="overlayCardTitle"><h5>${title}</h5></div>
+        <div class="overlayCardDiscription">${description}</div>
+        <div class="overlayCardDueDate"> <div><b>Due date:</b></div> <div>${dueDate}</div> </div>
+        <div class="overlayPrio"><div><b>Priority:</b></div><div class="overlayCardPrio ${prio}"> <div>${prioType}</div> <img src='${prioPic}'></div></div>
+        <div id="overlaySubtasks" class="overlaySubtasks"></div>
+        <div><b>Assigned To:</b></div>
+        <div id="overlayCardInitials" class="overlayCardInitialArea">
+        </div>
+    </div>
+    `;
+
 }

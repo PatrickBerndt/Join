@@ -115,6 +115,7 @@
     position: fixed;
     backdrop-filter: blur(10px);
     z-index: 99;
+    cursor: pointer;
 }
 .overlayCard{
     height: 800px;
@@ -122,15 +123,23 @@
     background-color: white;
     border-radius: 30px;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.innerContentBoxOverlay{
+    width: 90%;
+    height: 90%;
+
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding-left: 50px;
-    padding-top: 50px;
     gap: 25px;
     font-weight: 400;
     font-size: 21px;
+    cursor: default;
+    overflow: auto;
 }
 .overlayCardCategory{
     padding: 5px 15px;
@@ -224,4 +233,31 @@
     bottom: 24px;
     right: 41px;
     cursor: pointer;
+}
+.overlayEnterTitleInput{
+    min-height: 50px ;
+    font-size: 25px;
+    border-bottom: 1px solid rgb(214, 214, 214);
+    width: 90%;
+}
+.overlayassignTo{
+    border-bottom: 1px solid rgb(214, 214, 214);
+    width: 90%;
+    position: relative;
+}
+.overlayCard h4{
+    margin: 0;
+}
+.overlayDueDateInput{
+    min-height: 50px ;
+    border-bottom: 1px solid rgb(214, 214, 214);
+    width: 90%;
+}
+.overlayAddCategory{
+    border-bottom: 1px solid rgb(214, 214, 214);
+    width: 90%;
+    position: relative;
+}
+.overlayTextArea{
+    width: 90% !important;
 }

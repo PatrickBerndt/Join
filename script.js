@@ -22,7 +22,7 @@ async function init(c) {
         renderLetters();
     }else if(c == 'board'){
         updateHTML();
-        renderFullscreenView()
+        renderFullscreenEdit();
     }else if(c == 'summary'){
         greetUser();
     }
