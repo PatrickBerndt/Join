@@ -49,7 +49,6 @@ function editBoxTemplate(i,tel,firstName,lastName,email,initial,color){
             <button class="btn" type="submit">Save</button>
         </form>
     </div>
-    
     `;
 }
 
@@ -59,7 +58,6 @@ function generateAssainTos(i,assignTo){
         const position = assignTo[t];
         document.getElementById(`boardCardInitials${i}`).innerHTML +=`<div class="boardCardAvatar" style="background-color: ${users[position]['color']};">${users[position]['initial']}</div>`;
     }
-
 }
 
 function generateAssainTosOverlay(i,assignTo){
@@ -73,24 +71,29 @@ function generateAssainTosOverlay(i,assignTo){
         </div>
         `;
     }
-
 }
 
 function generateTask(i,title,description,category,prio){
     let prioPic ='';
     if(prio=='high'){prioPic='assets/icon/prioUrgent.png'}else if(prio=='mid'){prioPic='assets/icon/prioMedium.png'}else{prioPic='assets/icon/prioLow.png'}
-
     return /*html*/`
     <div class="boardCard" id="${i}" draggable="true" ondragstart="drag(event)" ondrop="event.stopPropagation()" onclick="toggleOverlay(${i})">
         <div class="boardCardCategory ${category['categoryColor']}">${category['categoryTitle']}</div>
         <div class="boardCardTitle"><h5>${title}</h5></div>
         <div class="boardCardDiscription">${description}</div>
+        <div id="progress${i}" class="progress dNone"></div>
         <div class="boardCardInitialArea">
           <div id="boardCardInitials${i}" class="boardCardInitials"></div>
           <div class="boardCardPrio"><img src='${prioPic}'></div>
         </div>
       </div>
       `;
+}
+
+function generateProgressbar(){
+    return /*html*/`
+    <div id="subtaskProgress"><div id="subtaskBar"></div></div><div class="progressText">0/3 Done</div> 
+    `;
 }
 
 function renderNumbersSummary(inToDo,inInProgress,inAwaitingFeedback,inDone,areUrgent){
@@ -118,5 +121,4 @@ function generateFullscreenView(title,description,category,dueDate,prioType,prio
         </div>
     </div>
     `;
-
 }

@@ -75,7 +75,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     color: rgba(0, 0, 0, 0);
     opacity: 1;
     display: block;
-    background: url(/assets/icon/calendar.png) no-repeat;
+    background: url(../assets/icon/calendar.png) no-repeat;
     width: 25px;
     height: 20px;
     border-width: thin

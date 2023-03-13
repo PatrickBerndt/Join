@@ -1,23 +1,18 @@
-let subTasks =[];
-let assignToList =[];
-let colors =['lightblue', 'lightred', 'lightgreen', 'lightorange', 'lightpurple', 'lightgray'];
-let activColor ='';
-let selectedCategorys ='';
-let taskPriority =[];
-
+/** this function toggle the assign to dropdown menu on the add task page */
 function toggleAssign(){
     document.getElementById('assignToContent').classList.toggle('dNone');
     document.getElementById('assignToImg').classList.toggle('flip');
     listAssignTo();
 }
 
+/** this function toggle the categoty dropdown menu on the add task page */
 function toggleCategory(){
     document.getElementById('addCategoryContent').classList.toggle('dNone');
     document.getElementById('addCategoryImg').classList.toggle('flip');
     listCategory();
 }
 
-
+/** this function reads the values out of the add taks form and save it to the backend */
 async function addTask(){
     await isChecked();
     let title = document.getElementById('enterTitleInput').value;
@@ -30,6 +25,7 @@ async function addTask(){
     window.open("board.html", "_self")
 }
 
+/** this function reads the state of the checkboxes in the assign to section and returns to the addTask function */
 function isChecked(){
     for (let d = 0; d < users.length; d++) {
         if(document.getElementById(`isChecked${d}`).checked){
@@ -39,6 +35,7 @@ function isChecked(){
     return;
 }
 
+/** this function removes from all categories the highlight and highlights the one that is selectet and return the position in selectedCategotys */
 function addCategory(i){
     for (let c = 0; c < categorys.length; c++) {
         document.getElementById(`cat${c}`).classList.remove('colorActiv');
@@ -47,6 +44,7 @@ function addCategory(i){
     selectedCategorys=i;
 }
 
+/** this function is the input to creat a new category */
 function callNewCategory(){
     document.getElementById('addCategoryContent').innerHTML ='';
     document.getElementById('addCategoryContent').innerHTML = /*html*/`
@@ -57,6 +55,7 @@ function callNewCategory(){
         renderCategoryColors();
 }
 
+/** this function creata the collors for a new category to choose from */
 function renderCategoryColors(){
     document.getElementById('colorPallet').innerHTML ='';
     for (let i = 0; i < colors.length; i++) {
@@ -66,6 +65,7 @@ function renderCategoryColors(){
     }
 }
 
+/** this function is for picking a color for a new category */
 function pickActivColor(i){
     for (let c = 0; c < colors.length; c++) {
         document.getElementById(`color${c}`).classList.remove('colorActiv');
@@ -74,6 +74,7 @@ function pickActivColor(i){
     activColor = i;
 }
 
+/** this function creats a new category with title and color  */
 async function addNewCategory(){
     let categoryTitle = document.getElementById('newCatInput').value;
     let categoryColor = colors[activColor];
@@ -83,6 +84,7 @@ async function addNewCategory(){
     listCategory();
 }
 
+/** this function lists all contacts to choose from to assigning to a task */
 function listAssignTo(){
     document.getElementById('assignToContent').innerHTML ='';
     for (let i = 0; i < users.length; i++) {
@@ -93,6 +95,7 @@ function listAssignTo(){
     }
 }
 
+/** this function lists all categiries to choose from , the first entry is allways "New category" */
 function listCategory(){
     document.getElementById('addCategoryContent').innerHTML ='';
     document.getElementById('addCategoryContent').innerHTML = /*html*/`
@@ -105,24 +108,21 @@ function listCategory(){
     }
 }
 
-function setPrio(prio){
-    taskPriority = prio;
-    setIsActiv();
-}
-
-function  setIsActiv(){
+/** this function is getting the prio form the pushed button and sets the highlight accordingly */
+function  setPrio(prio){
     document.getElementById('high').classList.remove('activ')
     document.getElementById('mid').classList.remove('activ')
     document.getElementById('low').classList.remove('activ')
-    if(taskPriority == 'high'){
+    if(prio == 'high'){
         document.getElementById('high').classList.add('activ')
-    }else if(taskPriority == 'mid'){
+    }else if(prio == 'mid'){
         document.getElementById('mid').classList.add('activ')
-    }else if(taskPriority == 'low'){
+    }else if(prio == 'low'){
         document.getElementById('low').classList.add('activ')
     }
 }
 
+/** this function saves a new subtask to the subtask list */
 function addSubToList(){
     let subTask = document.getElementById('addSubToList').value;
     subTasks.push(subTask);
@@ -130,6 +130,7 @@ function addSubToList(){
     renderSubTask();
 }
 
+/** this function is rendering the subtasklist into the add task form */
 function renderSubTask(){
     document.getElementById('addedSubtask').innerHTML='';
     for (let i = 0; i < subTasks.length; i++) {

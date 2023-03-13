@@ -51,7 +51,6 @@
 }
 .dragBox{
     width: 250px;
-;
 }
 .boardCard{
     width: 100%;
@@ -105,6 +104,29 @@
     margin-left: -12px;
     margin-bottom: 15px;
     border: 2px solid white;
+}
+.progress{
+    width: 100%;
+    height: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+.progressText{
+   font-weight: 600; 
+}
+#subtaskProgress {
+    margin-left: 15px;
+    min-width: 50%;
+    border-radius: 4px;
+    background-color: rgb(233, 233, 233);
+}
+#subtaskBar {
+    width: 50%;
+    height: 8px;
+    border-radius: 4px;
+    background-color: #4589ff;
 }
 .overlay{
     height: 100%;

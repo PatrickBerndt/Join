@@ -1,4 +1,4 @@
-let letters = [];
+
 
 function toggleAddContact(){
     document.getElementById('addNewContact').classList.toggle('dNone');

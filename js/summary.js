@@ -14,7 +14,6 @@ function greetUser(){
 function getGeetingTime(){
     let today = new Date()
     let currentHour = today.getHours()
-
     if (currentHour < 5) {
         return `Whoa, early bird`;
     } else if (currentHour < 12) {
