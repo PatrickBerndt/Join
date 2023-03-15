@@ -5,7 +5,6 @@ let categorys=[];
 let currentUser='';
 let letters = [];
 let subTasks =[];
-let subTaskIsChecked=[];
 let assignToList =[];
 let colors =['lightblue', 'lightred', 'lightgreen', 'lightorange', 'lightpurple', 'lightgray'];
 let activColor ='';

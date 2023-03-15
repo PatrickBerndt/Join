@@ -90,9 +90,9 @@ function generateTask(i,title,description,category,prio){
       `;
 }
 
-function generateProgressbar(){
+function generateProgressbar(subLength,subAreChecked,subWidth){
     return /*html*/`
-    <div id="subtaskProgress"><div id="subtaskBar"></div></div><div class="progressText">0/3 Done</div> 
+    <div id="subtaskProgress"><div id="subtaskBar" style="width:${subWidth}% !important;"></div></div><div class="progressText">${subAreChecked}/${subLength} Done</div> 
     `;
 }
 

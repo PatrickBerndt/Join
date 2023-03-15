@@ -110,22 +110,24 @@ function listCategory(){
 
 /** this function is getting the prio form the pushed button and sets the highlight accordingly */
 function  setPrio(prio){
-    document.getElementById('high').classList.remove('activ')
-    document.getElementById('mid').classList.remove('activ')
-    document.getElementById('low').classList.remove('activ')
+    document.getElementById('high').classList.remove('activ');
+    document.getElementById('mid').classList.remove('activ');
+    document.getElementById('low').classList.remove('activ');
+     taskPriority = prio;
     if(prio == 'high'){
-        document.getElementById('high').classList.add('activ')
+        document.getElementById('high').classList.add('activ');
     }else if(prio == 'mid'){
-        document.getElementById('mid').classList.add('activ')
+        document.getElementById('mid').classList.add('activ');
     }else if(prio == 'low'){
-        document.getElementById('low').classList.add('activ')
+        document.getElementById('low').classList.add('activ');
     }
 }
 
 /** this function saves a new subtask to the subtask list */
 function addSubToList(){
     let subTask = document.getElementById('addSubToList').value;
-    subTasks.push(subTask);
+    let subtaskPack = {'subTask':subTask, 'isChecked':false}
+    subTasks.push(subtaskPack);
     document.getElementById('addSubToList').value = '';
     renderSubTask();
 }
@@ -136,7 +138,7 @@ function renderSubTask(){
     for (let i = 0; i < subTasks.length; i++) {
         const subTask = subTasks[i];
         document.getElementById('addedSubtask').innerHTML +=/*html*/`
-        <ul>${subTask}</ul>
+        <ul>${subTask['subTask']}</ul>
         `;
     }
 }

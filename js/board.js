@@ -41,19 +41,32 @@ function updateHTML(){
 /** this function renders a progressbar if any subtasks are present */
 function renderProgressbar(i,task){
     if(task['subtask'].length != 0 ){
+        let subLength = task['subtask'].length;
+        let subAreChecked = 0;
+        for (let i = 0; i < task['subtask'].length; i++) {
+            const sub = task['subtask'][i];
+            if(sub['isChecked']){
+                subAreChecked++;
+            }
+        }
+        let subWidth = (100/subLength)*subAreChecked;
         document.getElementById(`progress${i}`).classList.remove('dNone')
-        document.getElementById(`progress${i}`).innerHTML=generateProgressbar();
+        document.getElementById(`progress${i}`).innerHTML=generateProgressbar(subLength,subAreChecked,subWidth);
         
     }
-    
+
 }
 
 /** this function is checking if a subtask is checked and saves it */
 async function subtaskIsChecked(i,s){
-    let subtaskposition = i;
-    subTaskIsChecked.push(subtaskposition);
-    await backend.setItem('subTaskIsChecked', JSON.stringify(subTaskIsChecked));
-   
+    let task = tasks[i];
+    if(document.getElementById(`${i}${s}`).checked){
+        tasks[i]['subtask'][s]['isChecked'] = true;        
+    }else{
+        tasks[i]['subtask'][s]['isChecked'] = false;   
+    }
+    await backend.setItem('tasks', JSON.stringify(tasks));
+    renderProgressbar(i,task)
 }
 
 /** this function is pushing the stored information from the JSON into the fullscreen edit view as values */
@@ -74,7 +87,7 @@ function renderFullscreenEdit(){
  * to generate the HTML code .
  * It also calls two more functions to generate the subtasks and the assaintos for the detail view
   */
-function renderFullscreenView(i){
+async function renderFullscreenView(i){
         let task = tasks[i];
         let title = task['title'];
         let assignTo = task['assingTo'];
@@ -84,7 +97,7 @@ function renderFullscreenView(i){
         let prio = task['prio'];
         let subTasks = task['subtask'];
         
-        getPrioType(prio);
+        await getPrioType(prio);
         document.getElementById('overlayCard').innerHTML = generateFullscreenView(title,description,category,dueDate,prioType,prio,prioPic,);
         generateAssainTosOverlay(i,assignTo);
         generateSubtaskOverlay(i,subTasks);
@@ -113,8 +126,19 @@ function generateSubtaskOverlay(i,subTasks){
     for (let s = 0; s < subTasks.length; s++) {
         const subTask = subTasks[s];
         document.getElementById('overlaySubtasks').innerHTML +=/*html*/`
-           <div class="singleSubTask"><input type="checkbox" id="${i}${s}" onclick="subtaskIsChecked(${i},${s})"><h5>${subTask}</h5></div> 
+           <div class="singleSubTask"><input type="checkbox" id="${i}${s}" onclick="subtaskIsChecked(${i},${s})"><h5>${subTask['subTask']}</h5></div> 
         `;
+    }
+    setChecked(i,subTasks)
+}
+
+/** this function sets checkboxes to checked if so */
+function setChecked(i,subTasks){
+    for (let s = 0; s < subTasks.length; s++) {
+        const subTask = subTasks[s];
+        if(subTask['isChecked']){
+            document.getElementById(`${i}${s}`).checked = true;
+        }
     }
 }
 
@@ -145,31 +169,8 @@ function drop(ev) {
 
 
 /** this function saves the position the task is droped on to the task itself for later placement on the board */
-function savePosition(i,pos){
+async function savePosition(i,pos){
     tasks[i]['position'] = pos;
-    save();
-}
-
-/** this function saves the saved position to the backend */
-async function save(){
     await backend.setItem('tasks', JSON.stringify(tasks));
 }
 
-var i = 0;
-function move() {
-  if (i == 0) {
-    i = 1;
-    var elem = document.getElementById("myBar");
-    var width = 1;
-    var id = setInterval(frame, 10);
-    function frame() {
-      if (width >= 100) {
-        clearInterval(id);
-        i = 0;
-      } else {
-        width++;
-        elem.style.width = width + "%";
-      }
-    }
-  }
-}
