@@ -10,6 +10,7 @@ let colors =['lightblue', 'lightred', 'lightgreen', 'lightorange', 'lightpurple'
 let activColor ='';
 let selectedCategorys ='';
 let taskPriority =[];
+let results =[];
 
 /** This two functions are used to stop the start animation */
 function stopAmimation(){
@@ -38,7 +39,7 @@ function pageInit(c){
     if(c == 'contact'){
         renderLetters();
     }else if(c == 'board'){
-        updateHTML();
+        updateHTML(tasks);
         renderFullscreenEdit();
     }else if(c == 'summary'){
         greetUser();
