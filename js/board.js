@@ -18,6 +18,25 @@ function toggleOverlayEdit(){
     document.getElementById('overlayCard').innerHTML='';
 }
 
+/** this function filters all tasks by a search value */
+function filterTasks(){
+    search = document.getElementById('searchBox').value;
+    let results = tasks.filter(p => p.title.toLowerCase().includes(search.toLowerCase()))
+    wipeDragArea();
+    for (let i = 0; i < results.length; i++) {
+        const task = results[i];
+        let title = task['title'];
+        let assignTo = task['assingTo'];
+        let description = task['description'];
+        let category = task['category'];
+        let prio = task['prio']
+        let pos = task['position']
+        document.getElementById(pos).innerHTML += generateTask(i,title,description,category,prio);
+        generateAssainTos(i,assignTo);
+        renderProgressbar(i,task);
+    }
+}
+
 /** this function wipes at first the whole area to place the tasks on the board
  * then it reads the single varables from the tasks array to hand it over to
  * the generateTask and the generateAssainTos funtion to genetate the HTML  
@@ -52,9 +71,7 @@ function renderProgressbar(i,task){
         let subWidth = (100/subLength)*subAreChecked;
         document.getElementById(`progress${i}`).classList.remove('dNone')
         document.getElementById(`progress${i}`).innerHTML=generateProgressbar(subLength,subAreChecked,subWidth);
-        
     }
-
 }
 
 /** this function is checking if a subtask is checked and saves it */
@@ -80,6 +97,7 @@ function renderFullscreenEdit(){
     document.getElementById('dueDate').value = task['dueDate'];
     let prio = task['prio'];
     let subTasks = task['subtask'];
+    setPrio(prio);
 }
 
 /** this function is rendering the detail view for the tasks on the board.
@@ -101,6 +119,7 @@ async function renderFullscreenView(i){
         document.getElementById('overlayCard').innerHTML = generateFullscreenView(title,description,category,dueDate,prioType,prio,prioPic,);
         generateAssainTosOverlay(i,assignTo);
         generateSubtaskOverlay(i,subTasks);
+       
 }
 
 /** this function are sets the text and the img source for the prio button on the detail view */

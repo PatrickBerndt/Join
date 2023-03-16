@@ -1,12 +1,17 @@
 @keyframes opacity{
-    from {opacity: 1;}
-    to {opacity: 0;}
+    0% {opacity: 1;}
+    50% {opacity: 0;}
+    100% {opacity: 0;}
 }
 @keyframes position{
     0% {top: calc(50% - 166px);
         left: calc(50% - 133px);
         opacity: 1;
         width: 265px;}
+    50% {top: 80px;
+        left: 77px;
+        opacity: 0;
+        width: 100px;}    
     100% {top: 80px;
         left: 77px;
         opacity: 0;
@@ -17,6 +22,10 @@
         left: calc(50% - 133px);
         opacity: 0;
         width: 265px;}
+    50% {top: 80px;
+        left: 77px;
+        opacity: 1;
+        width: 100px;}
     100% {top: 80px;
         left: 77px;
         opacity: 1;
@@ -29,7 +38,7 @@
     position: absolute;
     opacity: 1;
     animation-name: opacity;
-    animation-duration: 1s;
+    animation-duration: 2s;
     animation-timing-function: ease-in-out;
     z-index: 199;
 }
@@ -39,7 +48,7 @@
     left: calc(50% - 133px);
     opacity: 1;
     animation-name: position;
-    animation-duration: 1s;
+    animation-duration: 2s;
     animation-timing-function: ease-in-out;
     z-index: 199;
 }
@@ -49,7 +58,7 @@
     left: calc(50% - 133px);
     opacity: 0;
     animation: positionBlue;
-    animation-duration: 1s;
+    animation-duration: 2s;
     animation-timing-function: ease-in-out;
     z-index: 199;
 }

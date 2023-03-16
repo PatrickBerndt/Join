@@ -13,7 +13,7 @@ let taskPriority =[];
 
 /** This two functions are used to stop the start animation */
 function stopAmimation(){
-    setTimeout(animation,550);
+    setTimeout(animation,1000);
 }
 
 function animation(){
