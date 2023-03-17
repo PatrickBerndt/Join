@@ -269,6 +269,12 @@
     width: 90%;
     position: relative;
 }
+.overlayAssignToContent{
+    width: 92%;
+}
+.overlayAddCategoryContent{
+    width: 92%;
+}
 .overlayCard h4{
     margin: 0;
 }

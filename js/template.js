@@ -105,11 +105,11 @@ function renderNumbersSummary(inToDo,inInProgress,inAwaitingFeedback,inDone,areU
     document.getElementById('tasksUrgent').innerHTML =`${areUrgent}`;
 }
 
-function generateFullscreenView(title,description,category,dueDate,prioType,prio,prioPic,){
+function generateFullscreenView(i,title,description,category,dueDate,prioType,prio,prioPic,){
     return /*html*/`
     <div class="innerContentBoxOverlay">
         <img class="overlayCardClose" src="assets/icon/clear.png" onclick="toggleOverlay()">
-        <img class="overlayCardEdit" src="assets/icon/editButton.png" onclick="toggleOverlaySwitch()">
+        <img class="overlayCardEdit" src="assets/icon/editButton.png" onclick="toggleOverlaySwitch(${i})">
         <div class="overlayCardCategory ${category['categoryColor']}">${category['categoryTitle']}</div>
         <div class="overlayCardTitle"><h5>${title}</h5></div>
         <div class="overlayCardDiscription">${description}</div>
@@ -119,6 +119,49 @@ function generateFullscreenView(title,description,category,dueDate,prioType,prio
         <div><b>Assigned To:</b></div>
         <div id="overlayCardInitials" class="overlayCardInitialArea">
         </div>
+    </div>
+    `;
+}
+
+/** this function generates the task edit view  */
+function generateOverlyEditView(i){
+    document.getElementById('overlayCardEdit').innerHTML='';
+    document.getElementById('overlayCardEdit').innerHTML=/*html*/`
+    <div class="innerContentBoxOverlay">
+
+        <img class="overlayCardClose" src="assets/icon/clear.png" onclick="toggleOverlayEdit(${i})">
+
+        <input class="overlayEnterTitleInput" required id="enterTitleInput" type="text" placeholder="Enter a title">
+
+        <div class="overlayassignTo" id="assignTo">
+            <div style="padding-left: 20px;">Select contacts to assign </div><img id="assignToImg" class="dropToggle " onclick="toggleAssign(${i})" src="assets/icon/dropArrow.png">
+        </div>
+        <div class="overlayAssignToContent dNone" id="assignToContent"></div>
+
+        <h4>Due date</h4>
+        <input class="overlayDueDateInput" required type="date" name="" id="dueDate">
+
+        <h4>Category</h4>
+        <div class="overlayAddCategory" id="addCategory">
+            <div style="padding-left: 20px;">Select task category </div><img id="addCategoryImg" class="dropToggle " onclick="toggleCategory(${i})" src="assets/icon/dropArrow.png">
+        </div>
+        <div class="overlayAddCategoryContent dNone" id="addCategoryContent"></div>
+
+        <div class="priorityBtn">
+            <button id="high" onclick="setPrio('high')">Urgent <img src="assets/icon/prioUrgent.png"></button>
+            <button id="mid" onclick="setPrio('mid')">Medium <img src="assets/icon/prioMedium.png"></button>
+            <button id="low" onclick="setPrio('low')">Low <img src="assets/icon/prioLow.png"></button>  
+        </div>
+
+        <h4>Description</h4>
+        <textarea class="overlayTextArea" required name="" id="description" ></textarea>
+
+        <h4>Subtask</h4>
+        <div class="overlaySubtaskField">
+            <input id="addSubToList" class="addedSubtask" placeholder="Add new subtask" type="text">
+            <img class="addSubtaskPlus" onclick="addSubToList()" src="assets/icon/puls-blue.png">
+        </div>
+        <div  id="addedSubtask"></div>
     </div>
     `;
 }

@@ -6,10 +6,11 @@ function toggleOverlay(i){
 }
 
 /** this function is for switching between the fullscreen view and the edit view  */
-function toggleOverlaySwitch(){
+function toggleOverlaySwitch(i){
     document.getElementById('overlayEdit').classList.toggle('dNone');
     document.getElementById('overlay').classList.toggle('dNone');
     document.getElementById('overlayCard').innerHTML='';
+    renderFullscreenEdit(i);
 }
 
 /** this finction closes the edit view */
@@ -82,8 +83,8 @@ async function subtaskIsChecked(i,s){
 }
 
 /** this function is pushing the stored information from the JSON into the fullscreen edit view as values */
-function renderFullscreenEdit(){
-    let i =0;
+function renderFullscreenEdit(i){
+    generateOverlyEditView(i);
     let task = tasks[i];
     document.getElementById('enterTitleInput').value = task['title'];
     let assignTo = task['assingTo'];
@@ -91,8 +92,27 @@ function renderFullscreenEdit(){
     let category = task['category'];
     document.getElementById('dueDate').value = task['dueDate'];
     let prio = task['prio'];
-    let subTasks = task['subtask'];
     setPrio(prio);
+}
+
+/** this function highlights the catrgory witch is saved */
+function categorieIsChecked(i){
+    let task = tasks[i];
+    for (let c = 0; c < categorys.length; c++) {
+        const category = categorys[c];
+        if(category['categoryTitle'] == task['category']['categoryTitle']){
+            document.getElementById(`cat${c}`).classList.add('colorActiv');
+        }
+    }
+}
+
+/** this function checks the assign to checkboxes witch are saved */
+function assignToIsChecked(i){
+    let task = tasks[i];
+    for (let a = 0; a < task['assingTo'].length; a++) {
+        const pos = task['assingTo'][a];
+        document.getElementById(`isChecked${pos}`).checked = true;
+    }
 }
 
 /** this function is rendering the detail view for the tasks on the board.
@@ -111,7 +131,7 @@ async function renderFullscreenView(i){
         let subTasks = task['subtask'];
         
         await getPrioType(prio);
-        document.getElementById('overlayCard').innerHTML = generateFullscreenView(title,description,category,dueDate,prioType,prio,prioPic,);
+        document.getElementById('overlayCard').innerHTML = generateFullscreenView(i,title,description,category,dueDate,prioType,prio,prioPic,);
         generateAssainTosOverlay(i,assignTo);
         generateSubtaskOverlay(i,subTasks);
        
@@ -133,6 +153,7 @@ function getPrioType(prio){
     }
     return 
 }
+
 
 /** this function generates the subtasks on the detail view */
 function generateSubtaskOverlay(i,subTasks){

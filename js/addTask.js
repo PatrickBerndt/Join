@@ -1,15 +1,21 @@
 /** this function toggle the assign to dropdown menu on the add task page */
-function toggleAssign(){
+function toggleAssign(i){
     document.getElementById('assignToContent').classList.toggle('dNone');
     document.getElementById('assignToImg').classList.toggle('flip');
     listAssignTo();
+    if(i != undefined){
+         assignToIsChecked(i);
+    }
 }
 
 /** this function toggle the categoty dropdown menu on the add task page */
-function toggleCategory(){
+function toggleCategory(i){
     document.getElementById('addCategoryContent').classList.toggle('dNone');
     document.getElementById('addCategoryImg').classList.toggle('flip');
     listCategory();
+    if(i != undefined){
+    categorieIsChecked(i);
+    }
 }
 
 /** this function reads the values out of the add taks form and save it to the backend */
