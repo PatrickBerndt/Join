@@ -29,7 +29,6 @@ function filterTasks(){
          targetArray = tasks;
      }
     updateHTML(targetArray);
-   
 }
 
 /** this function wipes at first the whole area to place the tasks on the board
@@ -87,12 +86,11 @@ function renderFullscreenEdit(i){
     generateOverlyEditView(i);
     let task = tasks[i];
     document.getElementById('enterTitleInput').value = task['title'];
-    let assignTo = task['assingTo'];
     document.getElementById('description').value = task['description'];
-    let category = task['category'];
     document.getElementById('dueDate').value = task['dueDate'];
     let prio = task['prio'];
     setPrio(prio);
+    renderOverlaySubTask(i);
 }
 
 /** this function highlights the catrgory witch is saved */
@@ -113,6 +111,30 @@ function assignToIsChecked(i){
         const pos = task['assingTo'][a];
         document.getElementById(`isChecked${pos}`).checked = true;
     }
+}
+
+/** this function is rendering the subtasklist into the edit task form */
+function renderOverlaySubTask(i){
+    if(i != undefined){
+        loadSubtasks(i);    
+    }
+    document.getElementById('overlaySubtask').innerHTML='';
+    for (let s = 0; s < subTasks.length; s++) {
+        const subTask = subTasks[s];
+        document.getElementById('overlaySubtask').innerHTML +=/*html*/`
+        <input type="text" value="${subTask['subTask']}">
+        `;
+    }
+}
+
+/** this function loads the subtasks from the task into the subtask array */
+function loadSubtasks(i){
+    subTasks = [];
+    let task = tasks[i];
+    for (let s = 0; s < task['subtask'].length; s++) {
+        const subTask = task['subtask'][s];
+        subTasks.push(subTask);
+    }  
 }
 
 /** this function is rendering the detail view for the tasks on the board.

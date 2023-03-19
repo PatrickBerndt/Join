@@ -159,9 +159,10 @@ function generateOverlyEditView(i){
         <h4>Subtask</h4>
         <div class="overlaySubtaskField">
             <input id="addSubToList" class="addedSubtask" placeholder="Add new subtask" type="text">
-            <img class="addSubtaskPlus" onclick="addSubToList()" src="assets/icon/puls-blue.png">
+            <img class="addSubtaskPlus" onclick="addSubToList('edit')" src="assets/icon/puls-blue.png">
         </div>
-        <div  id="addedSubtask"></div>
+        <div  id="overlaySubtask"></div>
+        <button class="btn" onclick="addTask(${i})">Save Changes</button>
     </div>
     `;
 }

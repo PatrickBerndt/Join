@@ -17,16 +17,44 @@ function toggleCategory(i){
     categorieIsChecked(i);
     }
 }
-
+/** this function checks if there is somthing to check for */
+async function sonethingToCheck(edit){
+     if(edit != undefined){
+       if(document.getElementById(`isChecked${0}`) != null){
+       await isChecked(); 
+        }else{
+            assignToList = tasks[edit]['assingTo'];
+        } 
+    }else{
+        await isChecked();
+    }
+}
 /** this function reads the values out of the add taks form and save it to the backend */
-async function addTask(){
-    await isChecked();
+async function addTask(edit){
+    await sonethingToCheck(edit);
     let title = document.getElementById('enterTitleInput').value;
     let dueDate = document.getElementById('dueDate').value;
     let category = categorys[selectedCategorys];
     let description = document.getElementById('description').value;
-    let task = {'title':title,'assingTo':assignToList,'dueDate':dueDate,'category':category,'prio':taskPriority,'description':description,'subtask':subTasks,'position':'toDo',};
-    tasks.push(task);
+    if(edit != undefined){
+        pos = tasks[edit]['position'];
+        if(category == undefined){
+            category = tasks[edit]['category'];
+        }
+    }else{
+       pos = 'toDo';
+    }
+    let task = {'title':title,'assingTo':assignToList,'dueDate':dueDate,'category':category,'prio':taskPriority,'description':description,'subtask':subTasks,'position':pos,};
+    saveAddTask(edit,task);
+}
+
+/** this function saves the task to the backend */
+async function saveAddTask(edit,task){
+    if(edit != undefined){
+        tasks[edit] = task;
+    }else{
+        tasks.push(task);    
+    }
     await backend.setItem('tasks', JSON.stringify(tasks));
     window.open("board.html", "_self")
 }
@@ -130,12 +158,16 @@ function  setPrio(prio){
 }
 
 /** this function saves a new subtask to the subtask list */
-function addSubToList(){
+function addSubToList(x){
     let subTask = document.getElementById('addSubToList').value;
     let subtaskPack = {'subTask':subTask, 'isChecked':false}
     subTasks.push(subtaskPack);
     document.getElementById('addSubToList').value = '';
-    renderSubTask();
+    if(x == 'edit'){
+        renderOverlaySubTask();
+    }else{
+        renderSubTask();  
+    }
 }
 
 /** this function is rendering the subtasklist into the add task form */
