@@ -42,21 +42,14 @@
         </form>
       </div>
     </div>
-    <div
-      onclick="toggleEditContact(i)"
-      class="addNewContact dNone"
-      id="editContact"
-    ></div>
+    <div onclick="toggleEditContact(i)" class="addNewContact dNone" id="editContact"></div>
     <header>
       <img class="head-logo" onclick="window.location.href='summary.html';" src="assets/icon/logoSmallWhite.png">
       <div class="head-right">
         <p>Kanban Project Management Tool</p>
-        <img
-          src="assets/icon/help.png"
-          style="cursor: pointer"
-          onclick="window.location.href='help.html';"
-        />
-        <div id="initialHeader" class="initialHeader dNone"></div>
+        <img src="assets/icon/help.png" style="cursor: pointer" onclick="window.location.href='help.html';">
+        <div id="initialHeader" class="initialHeader dNone" onclick="toggleLogout()"></div>
+        <div id="logout" class="logout dNone" onclick="logout()">Logout</div>
       </div>
     </header>
     <nav>

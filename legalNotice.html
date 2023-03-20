@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join</title>
     <link rel="shortcut icon" href="assets/icon/favicon.png" type="image/x-icon">
+
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/contact.css">
     <link rel="stylesheet" href="css/summary.css">
@@ -22,13 +23,14 @@
     <script src="js/template.js"></script>
     
 </head>
-<body>
+<body onload="init()">
     <header>
         <img class="head-logo" onclick="window.location.href='summary.html';" src="assets/icon/logoSmallWhite.png">
         <div class="head-right">
             <p>Kanban Project Management Tool</p>
             <img src="assets/icon/help.png" style="cursor: pointer;" onclick="window.location.href='help.html';">
-            <div id="initialHeader" class="initialHeader dNone"></div>
+            <div id="initialHeader" class="initialHeader dNone" onclick="toggleLogout()"></div>
+            <div id="logout" class="logout dNone" onclick="logout()">Logout</div>
         </div>
     </header>
     <nav>

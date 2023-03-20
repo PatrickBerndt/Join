@@ -83,14 +83,17 @@ async function subtaskIsChecked(i,s){
 
 /** this function is pushing the stored information from the JSON into the fullscreen edit view as values */
 function renderFullscreenEdit(i){
-    generateOverlyEditView(i);
-    let task = tasks[i];
-    document.getElementById('enterTitleInput').value = task['title'];
-    document.getElementById('description').value = task['description'];
-    document.getElementById('dueDate').value = task['dueDate'];
-    let prio = task['prio'];
-    setPrio(prio);
-    renderOverlaySubTask(i);
+    if(i != undefined){
+        generateOverlyEditView(i);
+        let task = tasks[i];
+        document.getElementById('enterTitleInput').value = task['title'];
+        document.getElementById('description').value = task['description'];
+        document.getElementById('dueDate').value = task['dueDate'];
+        let prio = task['prio'];
+        setPrio(prio);
+        renderOverlaySubTask(i);  
+    }
+    
 }
 
 /** this function highlights the catrgory witch is saved */

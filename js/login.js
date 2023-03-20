@@ -16,6 +16,19 @@ async function logIn(){
     }
 }
 
+/** this function toggles the logout popup bubble */
+function toggleLogout(){
+    document.getElementById('logout').classList.toggle('dNone');
+}
+
+/** this function logs the current user out and calls the login page */
+async function logout(){
+    await backend.setItem('currentUser', JSON.stringify({'currentUser':''}));
+    window.location.href='index.html';
+    document.getElementById('initialHeader').classList.add('dNone');
+    document.getElementById('logout').classList.add('dNone');
+}
+
 function checkRememberMe(){
     if((document.getElementById('rememberMe').checked) == true){
         localStorage.setItem('user',loginEmail);
