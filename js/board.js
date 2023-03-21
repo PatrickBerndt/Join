@@ -234,3 +234,11 @@ async function savePosition(i,pos){
     await backend.setItem('tasks', JSON.stringify(tasks));
 }
 
+/** this function highlights the drop area */
+function highlightDropArea(position){
+    document.getElementById(position).classList.add('dragOver');
+}
+
+function unHighlightDropArea(position){
+    document.getElementById(position).classList.remove('dragOver');
+}

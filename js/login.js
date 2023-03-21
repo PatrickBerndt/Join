@@ -10,7 +10,7 @@ async function logIn(){
     for (let i = 0; i < users.length; i++) {
         const user = users[i];
         if ((user['email'] == loginEmail ) && (user['password'] == loginPassword )){
-            checkRememberMe();
+            await checkRememberMe(loginEmail,loginPassword);
             await backend.setItem('currentUser', JSON.stringify({'currentUser':i}));
             window.location.href='summary.html';
         }
@@ -53,7 +53,7 @@ async function logout(){
     document.getElementById('logout').classList.add('dNone');
 }
 
-function checkRememberMe(){
+function checkRememberMe(loginEmail,loginPassword){
     if((document.getElementById('rememberMe').checked) == true){
         localStorage.setItem('user',loginEmail);
         localStorage.setItem('PW',loginPassword);

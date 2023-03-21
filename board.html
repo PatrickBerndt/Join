@@ -62,29 +62,26 @@
       <input type="search" onkeyup="filterTasks()" name="" placeholder="Find task" id="searchBox" class="searchBox" >
       <button class="btn" style="width: 138px;" onclick="window.location.href='addTask.html';">Add task <img src="assets/icon/addPlus.png"></button>
     </div>
-    <div class="boardHeadline">
-      <div class="BSHL">
-        <h5>To do</h5>
-        <img src="assets/icon/addButton.png">
-      </div>
-      <div class="BSHL">
-        <h5>In progress</h5>
-        <img src="assets/icon/addButton.png">
-      </div>
-      <div class="BSHL">
-        <h5>Awaiting feedback</h5>
-        <img src="assets/icon/addButton.png">
-      </div>
-      <div class="BSHL">
-        <h5>Done</h5>
-        <img src="assets/icon/addButton.png">
-      </div>
-    </div>
     <div class="dragArea">
-      <div class="dragBox" ondrop="drop(event)" ondragover="allowDrop(event)" id="toDo"></div>
-      <div class="dragBox" ondrop="drop(event)" ondragover="allowDrop(event)" id="inProgress"></div>
-      <div class="dragBox" ondrop="drop(event)" ondragover="allowDrop(event)" id="feedback"></div>
-      <div class="dragBox" ondrop="drop(event)" ondragover="allowDrop(event)" id="done"></div>  
+      <div class="dragCollumn">
+        <div class="BSHL"><h5>To do</h5><img src="assets/icon/addButton.png"></div>
+        <div class="dragBox" ondrop="drop(event),unHighlightDropArea('toDo')" ondragleave="unHighlightDropArea('toDo') " ondragover="allowDrop(event), highlightDropArea('toDo')" id="toDo"></div>
+      </div>
+      <div class="dragCollumn"> 
+        <div class="BSHL"><h5>In progress</h5><img src="assets/icon/addButton.png"></div>
+        <div class="dragBox" ondrop="drop(event),unHighlightDropArea('inProgress')" ondragleave="unHighlightDropArea('inProgress') " ondragover="allowDrop(event), highlightDropArea('inProgress')" id="inProgress"></div>
+      </div>
+
+      <div class="dragCollumn">
+        <div class="BSHL"><h5>Awaiting feedback</h5><img src="assets/icon/addButton.png"></div>
+        <div class="dragBox" ondrop="drop(event),unHighlightDropArea('feedback')" ondragleave="unHighlightDropArea('feedback') " ondragover="allowDrop(event), highlightDropArea('feedback')" id="feedback"></div>
+      </div>
+
+      <div class="dragCollumn">
+        <div class="BSHL"><h5>Done</h5><img src="assets/icon/addButton.png"></div>
+        <div class="dragBox" ondrop="drop(event),unHighlightDropArea('done')" ondragleave="unHighlightDropArea('done') " ondragover="allowDrop(event), highlightDropArea('done')" id="done"></div>  
+      </div>
+
     </div>
   </body>
 </html>
