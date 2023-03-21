@@ -45,5 +45,6 @@ function pageInit(c){
         greetUser();
     }
     renderHeadInitials();
+    notificationBubble()
 }
 

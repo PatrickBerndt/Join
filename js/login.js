@@ -2,6 +2,7 @@ const params = new Proxy(new URLSearchParams(window.location.search), {
     get: (searchParams, prop) => searchParams.get(prop),
   });
   let resetUserMail = params.resetPassword; 
+  let succsess = params.succsess;
 
 async function logIn(){
     let loginEmail = document.getElementById('loginEmail').value;
@@ -19,6 +20,29 @@ async function logIn(){
 /** this function toggles the logout popup bubble */
 function toggleLogout(){
     document.getElementById('logout').classList.toggle('dNone');
+}
+
+/** this function toggles a notification bubble */
+function notificationBubble(){
+    if(succsess != null){
+        setTimeout(function(){
+            document.getElementById('notificationBubble').classList.remove('dNone');
+            if(succsess == 'mail'){
+                document.getElementById('notificationBubble').innerHTML= /*html*/`
+                <div class="bubbleMessage"><img src="assets/icon/emailSend.png"><span>An E-Mail has been sent to you</span></div>
+                `;
+            }else if(succsess == 'user'){
+                document.getElementById('notificationBubble').innerHTML= /*html*/`
+                <div class="bubbleMessage"><span>User successfully created</span></div>
+                `;
+            }else if(succsess == 'password'){
+                document.getElementById('notificationBubble').innerHTML= /*html*/`
+                <div class="bubbleMessage"><span>You reset your password</span></div>
+                `;
+            }
+            }, 1000);
+    }
+    
 }
 
 /** this function logs the current user out and calls the login page */
@@ -78,7 +102,7 @@ async function resetUserPassword(){
                 user = {'firstName':user['firstName'],'lastName':user['lastName'],'email':user['email'],'password':pw1,'color':user['color'],'phone':user['phone'],'initial':user['initial']};
                 users[i]=user;
                 await backend.setItem('users', JSON.stringify(users));
-                window.location.href='index.html';
+                window.location.href='index.html?succsess=password';
             }
         }
     }

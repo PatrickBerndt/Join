@@ -76,7 +76,7 @@ function wipeInput(x){
         document.getElementById('signUpName').value='';
         document.getElementById('signUpEmail').value='';
         document.getElementById('signUpPW').value='';
-        window.location.href='index.html';
+        window.location.href='index.html?succsess=user';
     }
 }
 

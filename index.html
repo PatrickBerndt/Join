@@ -24,7 +24,7 @@
   <script src="js/template.js"></script>
 
 </head>
-<body onload="init();stopAmimation();remember()">
+<body style="overflow: hidden;" onload="init();stopAmimation();remember()">
   <div id="animation" class="animation">
     <div class="Screen"></div>
     <div class="imageBox">
@@ -32,6 +32,8 @@
       <img class="logoBlue" src="assets/icon/logoBigBlue.png">
     </div>
   </div>
+
+  <div id="notificationBubble" class="notificationBubble dNone"></div>
 
   <div class="mainWindow">
     <img src="assets/icon/logoMediumBlue.png" style="position: absolute; top: 80px; left: 77px; width: 100px">

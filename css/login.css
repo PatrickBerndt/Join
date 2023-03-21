@@ -31,6 +31,12 @@
         opacity: 1;
         width: 100px;}
 }
+@keyframes notificationBubble{
+    0%{bottom: -50px;}
+    10%{bottom: 100px;}
+    90%{bottom: 100px;}
+    100%{bottom: -50px;}
+}
 .Screen{
     height: 100vh;
     width: 100vw;
