@@ -1,4 +1,26 @@
-
+@keyframes wiggleWiggle{
+    0%{transform: rotate(-5deg);
+        border: 2px solid rgb(253, 0, 0);}
+    5%{transform: rotate(5deg);}
+    10%{transform: rotate(-5deg);}
+    15%{transform: rotate(5deg);}
+    20%{transform: rotate(0deg);
+        border: 2px solid white;}
+    40%{border: 2px solid rgb(253, 0, 0);}
+    60%{border: 2px solid white;}
+    80%{transform: rotate(-5deg);
+        border: 2px solid rgb(253, 0, 0);}
+    85%{transform: rotate(5deg);}
+    90%{transform: rotate(-5deg);}
+    95% {transform: rotate(5deg);} 
+    100%{transform: rotate(0deg);
+        border: 2px solid white;}
+}
+.wiggle{
+    animation-name: wiggleWiggle;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+}
 .addTaskMain{
     position: fixed;
     top: 97px;
@@ -45,6 +67,11 @@
 .flip{
     transform: rotate(180deg);
     padding-top: 4px;
+}
+#addCategoryText{
+    display: flex;
+    align-items: center;
+    gap: 25px;
 }
 .priorityBtn{
     gap: 10px;

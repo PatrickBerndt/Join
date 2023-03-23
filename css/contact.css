@@ -82,7 +82,7 @@
     z-index: 10;
 }
 .btn-posRB{
-    position: absolute;
+    position: fixed;
     bottom: 64px;
     right: 48px;
 }

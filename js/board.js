@@ -11,6 +11,7 @@ function toggleOverlaySwitch(i){
     document.getElementById('overlay').classList.toggle('dNone');
     document.getElementById('overlayCard').innerHTML='';
     renderFullscreenEdit(i);
+    dateRestrict();
 }
 
 /** this finction closes the edit view */

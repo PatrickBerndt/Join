@@ -34,9 +34,10 @@ async function init(c) {
 }
 
 /** this function is for initialize the under pages that no error is thown in the console if they are not in use */
-function pageInit(c){
-    getLetters();
+async function pageInit(c){
+    
     if(c == 'contact'){
+        await getLetters();
         renderLetters();
     }else if(c == 'board'){
         updateHTML(tasks);
@@ -44,7 +45,28 @@ function pageInit(c){
     }else if(c == 'summary'){
         greetUser();
     }
+    if(document.getElementById('dueDate') != undefined){
+        dateRestrict();
+    }
     renderHeadInitials();
     notificationBubble()
+}
+
+/** this funcion restricts the date so you can´t pick dates in the past */
+function dateRestrict(){
+    let dtToday = new Date();
+
+    let month = dtToday.getMonth() + 1;
+    let day = dtToday.getDate();
+    let year = dtToday.getFullYear();
+
+    if(month < 10)
+        month = '0' + month.toString();
+    if(day < 10)
+        day = '0' + day.toString();
+
+    let maxDate = year + '-' + month + '-' + day;    
+    document.getElementById('dueDate').setAttribute('min', maxDate);
+    
 }
 

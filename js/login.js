@@ -15,6 +15,26 @@ async function logIn(){
             window.location.href='summary.html';
         }
     }
+    setTimeout(() => {
+        if(currentUser.length == undefined){
+        showAlertLogin();
+        }
+    }, 50);
+    
+}
+
+/** this function highlights email and password if entered worng */
+function showAlertLogin(){
+    document.getElementById('loginEmail').classList.add('wiggle');
+    document.getElementById('loginPassword').classList.add('wiggle');
+    succsess = 'wrong';
+    notificationBubble();
+    setTimeout(() => {
+        document.getElementById('loginEmail').classList.remove('wiggle');
+        document.getElementById('loginPassword').classList.remove('wiggle');
+       succsess = null ;
+       document.getElementById('notificationBubble').classList.add('dNone');
+    }, 4000);
 }
 
 /** this function toggles the logout popup bubble */
@@ -38,6 +58,10 @@ function notificationBubble(){
             }else if(succsess == 'password'){
                 document.getElementById('notificationBubble').innerHTML= /*html*/`
                 <div class="bubbleMessage"><span>You reset your password</span></div>
+                `;
+            }else if(succsess == 'wrong'){
+                document.getElementById('notificationBubble').innerHTML= /*html*/`
+                <div class="bubbleMessage"><span>You entered the worng email / password</span></div>
                 `;
             }
             }, 1000);

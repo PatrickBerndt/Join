@@ -4,7 +4,7 @@ function toggleAssign(i){
     document.getElementById('assignToImg').classList.toggle('flip');
     listAssignTo();
     if(i != undefined){
-         assignToIsChecked(i);
+        assignToIsChecked(i);
     }
 }
 
@@ -14,9 +14,10 @@ function toggleCategory(i){
     document.getElementById('addCategoryImg').classList.toggle('flip');
     listCategory();
     if(i != undefined){
-    categorieIsChecked(i);
+        categorieIsChecked(i);
     }
 }
+
 /** this function checks if there is somthing to check for */
 async function sonethingToCheck(edit){
      if(edit != undefined){
@@ -29,23 +30,56 @@ async function sonethingToCheck(edit){
         await isChecked();
     }
 }
+
 /** this function reads the values out of the add taks form and save it to the backend */
 async function addTask(edit){
-    await sonethingToCheck(edit);
-    let title = document.getElementById('enterTitleInput').value;
-    let dueDate = document.getElementById('dueDate').value;
-    let category = categorys[selectedCategorys];
-    let description = document.getElementById('description').value;
-    if(edit != undefined){
-        pos = tasks[edit]['position'];
+    if(taskPriority.length != 0){
+        
+        await sonethingToCheck(edit);
+        let title = document.getElementById('enterTitleInput').value;
+        let dueDate = document.getElementById('dueDate').value;
+        let category = categorys[selectedCategorys];
+        
+            
+      
+        let description = document.getElementById('description').value;
+        if(edit != undefined){
+            pos = tasks[edit]['position'];
+            if(category == undefined){
+                   category = tasks[edit]['category']; 
+            }
+        }else{
+        pos = 'toDo';
+        }
         if(category == undefined){
-            category = tasks[edit]['category'];
+           showAlert('category'); 
+        }else{
+            let task = {'title':title,'assingTo':assignToList,'dueDate':dueDate,'category':category,'prio':taskPriority,'description':description,'subtask':subTasks,'position':pos,};
+            saveAddTask(edit,task);   
         }
     }else{
-       pos = 'toDo';
+        showAlert('prio');
     }
-    let task = {'title':title,'assingTo':assignToList,'dueDate':dueDate,'category':category,'prio':taskPriority,'description':description,'subtask':subTasks,'position':pos,};
-    saveAddTask(edit,task);
+}
+
+/** this function point for 2 seconds at the input what is missing */
+function showAlert(pos){
+    if(pos == 'prio'){
+    document.getElementById('high').classList.add('wiggle');
+    document.getElementById('mid').classList.add('wiggle');
+    document.getElementById('low').classList.add('wiggle');
+    setTimeout(() => {
+        document.getElementById('high').classList.remove('wiggle');
+        document.getElementById('mid').classList.remove('wiggle');
+        document.getElementById('low').classList.remove('wiggle');
+    }, 2000); }
+    if(pos == 'category'){
+        document.getElementById('addCategory').classList.add('wiggle');
+        setTimeout(() => {
+            document.getElementById('addCategory').classList.remove('wiggle'); 
+        }, 2000);
+        return false;
+    }
 }
 
 /** this function saves the task to the backend */
@@ -61,12 +95,15 @@ async function saveAddTask(edit,task){
 
 /** this function reads the state of the checkboxes in the assign to section and returns to the addTask function */
 function isChecked(){
-    for (let d = 0; d < users.length; d++) {
-        if(document.getElementById(`isChecked${d}`).checked){
-            assignToList.push(d);
+    if(document.getElementById('isChecked0') != null){
+        for (let d = 0; d < users.length; d++) {
+            if(document.getElementById(`isChecked${d}`).checked){
+                assignToList.push(d);
+            }
         }
+        return;   
     }
-    return;
+    
 }
 
 /** this function removes from all categories the highlight and highlights the one that is selectet and return the position in selectedCategotys */
@@ -76,6 +113,9 @@ function addCategory(i){
     }
     document.getElementById(`cat${i}`).classList.add('colorActiv');
     selectedCategorys=i;
+    document.getElementById('addCategoryText').innerHTML=/*html*/`
+        ${categorys[i]['categoryTitle']} <div class="singleColor ${categorys[i]['categoryColor']}"></div>
+    `;
 }
 
 /** this function is the input to creat a new category */

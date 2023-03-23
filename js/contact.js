@@ -18,6 +18,7 @@ function getLetters(){
         }
     }
     letters.sort();
+    renderLetters();
 }
 
 function addContact(){
@@ -33,6 +34,7 @@ function addContact(){
     addUser(user,x);
     toggleAddContact();
     getLetters();
+
 }
 
 function addSignUpUser(){
