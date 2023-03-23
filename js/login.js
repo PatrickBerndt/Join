@@ -112,6 +112,10 @@ function renderHeadInitials(){
         document.getElementById('initialHeader').classList.remove('dNone');
         document.getElementById('initialHeader').innerHTML = `${user['initial']}`;
         document.getElementById('initialHeader').style.backgroundColor = user['color']; 
+    }else{
+        document.getElementById('initialHeader').classList.remove('dNone');
+        document.getElementById('initialHeader').innerHTML = `GU`;
+        document.getElementById('initialHeader').style.backgroundColor = '#919191'; 
     }
 }
 
