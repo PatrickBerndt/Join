@@ -218,6 +218,7 @@ function allowDrop(ev) {
 
 function drag(ev) {
     ev.dataTransfer.setData("text", ev.target.id);
+    pickupTask(ev.target.id);
 }
 
 function drop(ev) {
@@ -226,8 +227,18 @@ function drop(ev) {
     var data = ev.dataTransfer.getData("text");
     ev.target.appendChild(document.getElementById(data));
     savePosition(data,position);
+    updateHTML(tasks);
 }
 
+/** this function hides all tasks except the one which is draged */
+function pickupTask(pick){
+    for (let i = 0; i < tasks.length; i++) {
+        if(i != pick){
+            document.getElementById(i).classList.add('dNone');
+        }
+        
+    }
+}
 
 /** this function saves the position the task is droped on to the task itself for later placement on the board */
 async function savePosition(i,pos){
