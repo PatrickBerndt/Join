@@ -134,7 +134,7 @@ function generateOverlyEditView(i){
         <input class="overlayEnterTitleInput" required id="enterTitleInput" type="text" placeholder="Enter a title">
 
         <div class="overlayassignTo" id="assignTo">
-            <div style="padding-left: 20px;">Select contacts to assign </div><img id="assignToImg" class="dropToggle " onclick="toggleAssign(${i})" src="assets/icon/dropArrow.png">
+            <div style="padding-left: 20px; cursor: pointer;" onclick="toggleAssign(${i})">Select contacts to assign </div><img id="assignToImg" class="dropToggle "  src="assets/icon/dropArrow.png">
         </div>
         <div class="overlayAssignToContent dNone" id="assignToContent"></div>
 
@@ -143,7 +143,7 @@ function generateOverlyEditView(i){
 
         <h4>Category</h4>
         <div class="overlayAddCategory" id="addCategory">
-            <div style="padding-left: 20px;">Select task category </div><img id="addCategoryImg" class="dropToggle " onclick="toggleCategory(${i})" src="assets/icon/dropArrow.png">
+            <div style="padding-left: 20px; cursor: pointer;" onclick="toggleCategory(${i})">Select task category </div><img id="addCategoryImg" class="dropToggle " src="assets/icon/dropArrow.png">
         </div>
         <div class="overlayAddCategoryContent dNone" id="addCategoryContent"></div>
 
@@ -162,7 +162,7 @@ function generateOverlyEditView(i){
             <img class="addSubtaskPlus" onclick="addSubToList('edit')" src="assets/icon/puls-blue.png">
         </div>
         <div  id="overlaySubtask"></div>
-        <button class="btn" onclick="addTask(${i})">Save Changes</button>
+        <button class="btn" style="padding: 10px;  margin-left: 30%;" onclick="addTask(${i})">Save Changes</button>
     </div>
     `;
 }

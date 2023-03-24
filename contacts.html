@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/addTask.css">
     <link rel="stylesheet" href="css/board.css">
+    <link rel="stylesheet" href="css/media.css">
 
     <script src="mini_backend.js"></script>
     <script src="script.js"></script>
@@ -46,8 +47,8 @@
     <header>
       <img class="head-logo" onclick="window.location.href='summary.html';" src="assets/icon/logoSmallWhite.png">
       <div class="head-right">
-        <p>Kanban Project Management Tool</p>
-        <img src="assets/icon/help.png" style="cursor: pointer" onclick="window.location.href='help.html';">
+        <p class="hideMobile">Kanban Project Management Tool</p>
+        <img class="hideMobile" src="assets/icon/help.png" style="cursor: pointer" onclick="window.location.href='help.html';">
         <div id="initialHeader" class="initialHeader dNone" onclick="toggleLogout()"></div>
         <div id="logout" class="logout dNone" >
           <div class="hideDesktop" style="cursor: pointer;" onclick="window.location.href='help.html';">Help</div>
@@ -61,7 +62,7 @@
       <a class="navLink" href="board.html"><img src="assets/icon/board.png"><p>Board</p></a>
       <a class="navLink" href="addTask.html"><img src="assets/icon/addTask.png"><p>Add Task</p></a>
       <a class="navLink activ" href="#"><img src="assets/icon/contacts.png"><p>Contacts</p></a>
-      <a class="navLink" href="legalNotice.html"><img src="assets/icon/info.png"><p>Legal notice</p></a>
+      <a class="navLink hideMobile" href="legalNotice.html"><img src="assets/icon/info.png"><p>Legal notice</p></a>
     </nav>
 
     <button class="btn btn-posRB" onclick="toggleAddContact()">

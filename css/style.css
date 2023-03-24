@@ -9,7 +9,7 @@ body{
     display: none !important;
 }
 .hideMobile{
-    display: none !important;
+    display: flex !important;
 }
 input{
     border: unset;
@@ -49,6 +49,8 @@ nav{
 }
 nav a:last-child{
     margin-top: 400px;
+    
+
 }
 a{
     text-decoration: none;
@@ -123,7 +125,7 @@ a{
 
 }
 .navLink img{
-    margin-right: 21px;
+    margin-right: 20px;
     margin-left: 20%;
 }
 .activ{

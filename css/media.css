@@ -1,0 +1,116 @@
+@media (max-width:1400px){
+    .dragArea{
+       width: calc(95% - 232px);
+    }
+    .BSHL{
+        width: calc(34% - 232px);
+    }
+    .dragBox{
+       width: 100%;
+    }
+    .dragCollumn{
+        width: 50%;
+    }
+}
+@media (max-width:1050px){
+    .hideDesktop{
+        display: unset !important;
+    }
+    .hideMobile{
+        display: none !important;
+    }
+    nav{
+        width: 100%;
+        height: 40px;
+        top: unset;
+        bottom: 0;
+        flex-direction: row;
+        justify-content: center;
+        background-color: white;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .dragArea{
+        width: 90%;
+        left: unset;
+        margin-right: 20px;
+     }
+    main{
+        left: unset;
+    }
+    .main-right-tasks{
+        margin: 0;
+    }
+    .main-right-top{
+        justify-content: center;
+    }
+    .main-right-bottom{
+        justify-content: center;
+        margin-bottom: 80px;
+    }
+    .addTaskMain{
+        left: 20%;
+    }
+    .contactContent{
+        left: unset;
+        width: 40%;
+        padding-left: 0;
+    }
+    .contactContentRight{
+        left: 40%;
+    }
+    .contactBox{
+        margin-left: 0;
+    }
+    .impressumContent{
+        left: 50px;
+    }
+}
+@media (max-width: 850px){
+    .dragArea{
+        flex-wrap: wrap;
+    }
+    .searchPart{
+        left: 20%;
+    }
+    .dragCollumn{
+        max-width: 30%;
+        min-height: 150px;
+        
+    }
+    .BSHL{
+        min-width: 100%;
+        position: unset;
+    }
+    .addTaskMain{
+        left: 10%;
+    }
+    .task-urgent{
+        width: 80%;
+    }
+    .dragBox{
+        min-height: 150px;
+    }
+}
+@media (max-width: 700px){
+    .dragCollumn{
+        max-width: 45%;
+        min-height: 10%;
+    }
+    .searchPart{
+        position: absolute;
+        left: unset;
+        width: 100%;
+    }
+    .dragArea{
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}
+@media (max-width: 500px){
+    .dragCollumn{
+        max-width: 90%;
+        min-height: 10%;
+    }
+    
+}

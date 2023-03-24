@@ -218,7 +218,9 @@ function allowDrop(ev) {
 
 function drag(ev) {
     ev.dataTransfer.setData("text", ev.target.id);
-    pickupTask(ev.target.id);
+    setTimeout(() => {
+         pickupTask(ev.target.id);
+    }, 10);
 }
 
 function drop(ev) {
@@ -236,7 +238,6 @@ function pickupTask(pick){
         if(i != pick){
             document.getElementById(i).classList.add('dNone');
         }
-        
     }
 }
 
