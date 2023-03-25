@@ -11,6 +11,9 @@ body{
 .hideMobile{
     display: flex !important;
 }
+.dNone{
+    display: none !important;
+}
 input{
     border: unset;
     font-size: 19px;

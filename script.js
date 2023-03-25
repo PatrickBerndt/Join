@@ -43,6 +43,7 @@ async function pageInit(c){
         updateHTML(tasks);
         renderFullscreenEdit();
     }else if(c == 'summary'){
+        if(animate == 'play'){greetAnimation()};
         greetUser();
     }
     if(document.getElementById('dueDate') != undefined){

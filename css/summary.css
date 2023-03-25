@@ -125,3 +125,25 @@ main h2 {
 .task-todo-top img {
   padding: 0px 22px 10px 0;
 }
+.mobileOverlay{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  z-index: 100;
+  font-size: 40px;
+  font-weight: 600;
+  opacity: 0;
+  animation-name: greeting;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+}
+@keyframes greeting {
+  0%{opacity: 0;}
+  25%{opacity: 1;}
+  75%{opacity: 1;}
+  100%{opacity: 0;}
+}

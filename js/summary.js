@@ -3,12 +3,23 @@ function greetUser(){
     if(activUser !== ''){
         let user = users[activUser];
         document.getElementById('greet').innerHTML = getGeetingTime();
+        document.getElementById('greetOverlay').innerHTML = getGeetingTime();
         document.getElementById('greetName').innerHTML = `${user['firstName']+' '+user['lastName']}`;
+        document.getElementById('greetNameOverlay').innerHTML = `${user['firstName']+' '+user['lastName']}`;
         document.getElementById('greet').innerHTML +=`,`;
+        document.getElementById('greetOverlay').innerHTML +=`,`;
     }else{
         document.getElementById('greet').innerHTML = getGeetingTime();
+        document.getElementById('greetOverlay').innerHTML = getGeetingTime();
     }
     checkPosition();
+}
+
+function greetAnimation(){
+    document.getElementById('mobileOverlay').classList.remove('dNone');
+    setTimeout(() => {
+        document.getElementById('mobileOverlay').classList.add('dNone');  
+    }, 2000);
 }
 
 function getGeetingTime(){

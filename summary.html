@@ -27,6 +27,7 @@
 
 </head>
 <body onload="init('summary')">
+  
   <header>
     <img class="head-logo" onclick="window.location.href='summary.html';" src="assets/icon/logoSmallWhite.png">
     <div class="head-right">
@@ -49,10 +50,13 @@
   </nav>
   
   <main>
-    
+    <div class="mobileOverlay dNone" id="mobileOverlay">
+      <div id="greetOverlay" class="greet"></div>
+      <div id="greetNameOverlay" class="greetName"></div>  
+    </div>
 
       <div class="main-right">
-        <div class="main-right-header">
+        <div class="main-right-header hideMobile">
           <div id="greet" class="greet"></div>
           <div id="greetName" class="greetName"></div>  
         </div>

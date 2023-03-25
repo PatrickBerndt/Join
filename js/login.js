@@ -3,6 +3,7 @@ const params = new Proxy(new URLSearchParams(window.location.search), {
   });
   let resetUserMail = params.resetPassword; 
   let succsess = params.succsess;
+  let animate = params.animate;
 
 async function logIn(){
     let loginEmail = document.getElementById('loginEmail').value;
@@ -12,7 +13,7 @@ async function logIn(){
         if ((user['email'] == loginEmail ) && (user['password'] == loginPassword )){
             await checkRememberMe(loginEmail,loginPassword);
             await backend.setItem('currentUser', JSON.stringify({'currentUser':i}));
-            window.location.href='summary.html';
+            window.location.href='summary.html?animate=play';
         }
     }
     setTimeout(() => {
@@ -92,7 +93,7 @@ function checkRememberMe(loginEmail,loginPassword){
 
 async function guestUser(){
     await backend.setItem('currentUser', JSON.stringify({'currentUser':''}));
-    window.location.href='summary.html';
+    window.location.href='summary.html?animate=play';
     document.getElementById('initialHeader').classList.add('dNone');
 }
  
