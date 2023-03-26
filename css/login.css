@@ -76,6 +76,14 @@
     justify-content: center;
     align-items: center;
 }
+.signIn{
+    display: flex; 
+    align-items: center; 
+    gap: 20px; 
+    position: absolute; 
+    top: 67px; 
+    right: 86px;  
+}
 .mainWindowBlue{
     width: 100vw;
     height: 100vh;

@@ -57,11 +57,12 @@
     }
     .contactContent{
         left: unset;
-        width: 40%;
+        width: 45%;
         padding-left: 0;
+        height: calc(98vh - 170px);
     }
     .contactContentRight{
-        left: 40%;
+        left: 45%;
     }
     .contactBox{
         margin-left: 0;
@@ -90,12 +91,34 @@
     }
     .task-urgent{
         width: 80%;
+        margin-left: 5px;
     }
     .dragBox{
         min-height: 150px;
     }
+    .contactContent{
+        width: 100%;
+    }
+    .contactContentRight{
+        left: 0;        
+    }
+    .growMobile{
+        opacity: 1;
+        z-index: 10;
+    }
+    .shrinkMobile{
+        opacity: 0;
+        z-index: 0;
+    }
+    .showArrowMobile{
+        display: flex;
+    }
 }
 @media (max-width: 700px){
+    .loginBox{
+        width: 90%;
+        margin-top: 30px;
+    }
     .dragCollumn{
         max-width: 45%;
         min-height: 10%;
@@ -162,6 +185,7 @@
     }
     .priorityBtn button{
         width: 30%;
+        font-size: 15px;
     }
     #description{
         width: 100%;
@@ -169,5 +193,53 @@
     .task-urgent-left{
         margin: 20px;
     }
-
+    .signIn{
+        right: unset;
+        top: unset;
+        bottom: 50px;
+    }
+    #loginEmail{
+        width: 80%;
+    }
+    #loginPassword{
+        width: 80%;
+    }
+    #signUpName{
+        width: 80%;
+    }
+    #signUpEmail{
+        width: 80%;
+    }
+    #signUpPW{
+        width: 80%;
+    }
+    #reset1Password{
+        width: 80%;
+    }
+    #reset2Password{
+        width: 80%;
+    }
+    .btn{
+        width: 100%;
+    }
+    .remember{
+        flex-direction: column;
+        gap: 0;
+    }
+    .forgotten{
+        text-align: center;
+    }
+    .btn-posRB{
+        width: 170px;
+        height: 35px;
+        top: 105px;
+        right: 20px;
+        z-index: 20;
+    }
+    .showArrowMobile{
+        left: 20px;
+    }
+    .contactHeadBox {
+        flex-direction: column;
+    }
 }

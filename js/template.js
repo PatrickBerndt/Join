@@ -11,6 +11,7 @@ function contactTemplateShort(i,email,firstName,lastName,initials,color){
 
 function contactTemplateLong(i,tel,email,firstName,lastName,initials,color){
     return /*html*/`
+    <img class="showArrowMobile" src="assets/icon/back.png" onclick="switchInMobile()">
     <div class="contactHeadBox">
             <div class="avatarBoxFull" style="background-color: ${color};" onclick="addTask()">${initials}</div>
             <div class="contactFullHead">

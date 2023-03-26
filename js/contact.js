@@ -61,6 +61,14 @@ function renderContact(i){
     let tel = user['phone']
     document.getElementById(`contactContentRight`).innerHTML = contactTemplateLong(i,tel,email,firstName,lastName,initials,color) ;
     document.getElementById(`contactBox${i}`).classList.add('activ')
+    switchInMobile();
+}
+
+function switchInMobile(){
+    document.getElementById('contactContent').classList.toggle('shrinkMobile');
+    document.getElementById('contactContent').classList.toggle('growMobile');
+    document.getElementById('contactContentRight').classList.toggle('shrinkMobile');
+    document.getElementById('contactContentRight').classList.toggle('growMobile');
 }
 
 function wipeActivContact(){
