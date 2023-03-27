@@ -1,9 +1,6 @@
-@media (max-width:1400px){
-    .dragArea{
-       width: calc(95% - 232px);
-    }
+@media (max-width:1450px){
     .BSHL{
-        width: calc(34% - 232px);
+        width: 18%;
     }
     .dragBox{
        width: 100%;
@@ -12,7 +9,15 @@
         width: 50%;
     }
 }
+@media (max-width:1200px){
+    .BSHL{
+        width: 17%;
+    }
+}
 @media (max-width:1050px){
+    .BSHL{
+        width: 20%;
+    }
     .hideDesktop{
         display: flex !important;
     }
@@ -37,6 +42,7 @@
         width: 90%;
         left: unset;
         margin-right: 20px;
+        margin-bottom: 50px;
      }
     main{
         left: unset;
@@ -72,6 +78,9 @@
     }
 }
 @media (max-width: 850px){
+    .btn-posRB{
+        z-index: 20;
+    }
     .dragArea{
         flex-wrap: wrap;
     }
@@ -157,6 +166,16 @@
     .mobileOverlay{
         flex-direction: column;
     }
+    .task-urgent{
+       margin: 0;
+       
+    }
+    .verticalLine{
+        margin: 5px;
+    }
+    .task-urgent-left{
+        margin: 20px;
+    }
 }
 @media (max-width: 500px){
     .dragCollumn{
@@ -175,6 +194,7 @@
         margin: 10px;
         justify-content: center;
         width: 95%;
+        margin-bottom: 60px;
     }
     .dragBox{
         margin: 0;
@@ -191,7 +211,7 @@
         width: 100%;
     }
     .task-urgent-left{
-        margin: 20px;
+        margin: 0px;
     }
     .signIn{
         right: unset;
@@ -241,5 +261,9 @@
     }
     .contactHeadBox {
         flex-direction: column;
+    }
+    .saveChanges{
+        width: 200px;
+        margin-left: 20% !important;
     }
 }

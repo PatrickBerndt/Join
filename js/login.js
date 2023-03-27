@@ -20,7 +20,7 @@ async function logIn(){
         if(currentUser.length == undefined){
         showAlertLogin();
         }
-    }, 50);
+    }, 200);
     
 }
 

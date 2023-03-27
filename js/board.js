@@ -23,7 +23,7 @@ function toggleOverlayEdit(){
 /** this function filters all tasks by a search value */
 function filterTasks(){
     search = document.getElementById('searchBox').value;
-    results = tasks.filter(p => p.title.toLowerCase().includes(search.toLowerCase()))
+    results = tasks.filter(p => p.title.toLowerCase().includes(search.toLowerCase()) || p.description.toLowerCase().includes(search.toLowerCase()))
     if(results.length != 0){
         targetArray = results;
      }else{

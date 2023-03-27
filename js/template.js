@@ -13,10 +13,10 @@ function contactTemplateLong(i,tel,email,firstName,lastName,initials,color){
     return /*html*/`
     <img class="showArrowMobile" src="assets/icon/back.png" onclick="switchInMobile()">
     <div class="contactHeadBox">
-            <div class="avatarBoxFull" style="background-color: ${color};" onclick="addTask()">${initials}</div>
+            <div class="avatarBoxFull" style="background-color: ${color};" >${initials}</div>
             <div class="contactFullHead">
                 <h2>${firstName + ' ' + lastName}</h2>
-                <p><img src="assets/icon/addButton.png">Add Task</p>
+                <p onclick="addTaskContact(${i})" ><img src="assets/icon/addButton.png">Add Task</p>
             </div>
         </div>
         <div class="contactInfo">
@@ -163,7 +163,7 @@ function generateOverlyEditView(i){
             <img class="addSubtaskPlus" onclick="addSubToList('edit')" src="assets/icon/puls-blue.png">
         </div>
         <div  id="overlaySubtask"></div>
-        <button class="btn" style="padding: 10px;  margin-left: 30%;" onclick="addTask(${i})">Save Changes</button>
+        <button class="btn saveChanges" style="padding: 10px;  margin-left: 30%;" onclick="addTask(${i})">Save Changes</button>
     </div>
     `;
 }

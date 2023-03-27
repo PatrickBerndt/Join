@@ -46,7 +46,7 @@ function addSignUpUser(){
     let lastName = name.split(' ').slice(-1).join(' ');
     let initials = name.replace(/[^A-Z]/g, '');
     let color = '#'+(Math.floor(Math.random()*16777215).toString(16));
-    let user = {'firstName':firstName,'lastName':lastName,'email':email,'password':password,'color':color,'phone':'','initial':initials};
+    let user = {'firstName':firstName.capitalize(),'lastName':lastName.capitalize(),'email':email,'password':password,'color':color,'phone':'','initial':initials};
     addUser(user,x);
 }
 
@@ -150,5 +150,6 @@ async function saveEdit(i){
     await backend.setItem('users', JSON.stringify(users));
     document.getElementById('editContact').classList.toggle('dNone');
     renderContact(i);
+    renderLetters();
 }
 

@@ -11,6 +11,7 @@ let activColor ='';
 let selectedCategorys ='';
 let taskPriority =[];
 let results =[];
+let addFromContact ='';
 
 /** This two functions are used to stop the start animation */
 function stopAmimation(){
@@ -45,12 +46,14 @@ async function pageInit(c){
     }else if(c == 'summary'){
         if(animate == 'play'){greetAnimation()};
         greetUser();
+    }else if(c == 'addTask'){
+        checkAddFromContact();
     }
     if(document.getElementById('dueDate') != undefined){
         dateRestrict();
     }
-    renderHeadInitials();
-    notificationBubble()
+        renderHeadInitials();
+        notificationBubble()
 }
 
 /** this funcion restricts the date so you can´t pick dates in the past */

@@ -16,25 +16,30 @@
     margin-left: 50px;
 }
 .dragCollumn{
+    width: 25%;
     min-height: 100%;
     position: relative;
 }
 .BSHL{
-    height: 30px;
-    width: 250px;
+    min-height: 30px;
+    width: 19%;
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
     position: fixed;
     background-color: white;
 }
+.BSHL img{
+height: 30px;
+} 
+
 .BSHL h5{
     font-size: 20px;
     color: #42526E;
     margin: 0;
 }
 .dragArea{
-    width: 1100px;
+    width: calc(95% - 232px);
     position: fixed;
     top: 237px;
     left: 232px;
@@ -43,12 +48,12 @@
     justify-content: space-between;
     gap: 20px;
     margin: 10px 10px 10px 50px;
-    padding: 5px;
+    padding-right: 5px;
     overflow: auto;
 }
 .dragBox{
     margin-top: 50px;
-    width: 250px;
+    width: 100%;
     min-height: 90%;
 }
 .dragOver{

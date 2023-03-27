@@ -31,35 +31,56 @@ async function sonethingToCheck(edit){
     }
 }
 
+/** this function checks if a contact calls addTask */
+async function checkAddFromContact(){
+    addFromContact = JSON.parse(backend.getItem('addFromContact')) || [];
+    if(addFromContact != ''){
+        document.getElementById('assignToContent').classList.toggle('dNone');
+        document.getElementById('assignToImg').classList.toggle('flip');
+        listAssignTo();
+        document.getElementById(`isChecked${addFromContact}`).checked = true;
+        addFromContact = '';
+        await backend.setItem('addFromContact', JSON.stringify(addFromContact));
+    }
+}    
+
 /** this function reads the values out of the add taks form and save it to the backend */
 async function addTask(edit){
     if(taskPriority.length != 0){
-        
         await sonethingToCheck(edit);
         let title = document.getElementById('enterTitleInput').value;
         let dueDate = document.getElementById('dueDate').value;
         let category = categorys[selectedCategorys];
-        
-            
-      
         let description = document.getElementById('description').value;
-        if(edit != undefined){
-            pos = tasks[edit]['position'];
-            if(category == undefined){
-                   category = tasks[edit]['category']; 
-            }
-        }else{
-        pos = 'toDo';
-        }
-        if(category == undefined){
-           showAlert('category'); 
-        }else{
-            let task = {'title':title,'assingTo':assignToList,'dueDate':dueDate,'category':category,'prio':taskPriority,'description':description,'subtask':subTasks,'position':pos,};
-            saveAddTask(edit,task);   
-        }
+        ifLogicAddTask(title,dueDate,category,description,edit)
     }else{
         showAlert('prio');
     }
+}
+
+/** this function contains the if logic for the addTask function */
+function ifLogicAddTask(title,dueDate,category,description,edit){
+    if(edit != undefined){
+        pos = tasks[edit]['position'];
+        if(category == undefined){
+               category = tasks[edit]['category']; 
+        }
+    }else{
+    pos = 'toDo';
+    }
+    if(category == undefined){
+       showAlert('category'); 
+    }else{
+        let task = {'title':title,'assingTo':assignToList,'dueDate':dueDate,'category':category,'prio':taskPriority,'description':description,'subtask':subTasks,'position':pos,};
+        saveAddTask(edit,task);   
+    }
+}
+
+/** this function opens addTask with a preassigned contact */
+async function addTaskContact(contact){
+    addFromContact = contact;
+    await backend.setItem('addFromContact', JSON.stringify(addFromContact));
+    window.open("addTask.html", "_self")
 }
 
 /** this function point for 2 seconds at the input what is missing */
