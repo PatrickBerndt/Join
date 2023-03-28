@@ -5,6 +5,7 @@ const params = new Proxy(new URLSearchParams(window.location.search), {
   let succsess = params.succsess;
   let animate = params.animate;
 
+/** this function gets an email and a password to search through the user JSON if the given combination is present */
 async function logIn(){
     let loginEmail = document.getElementById('loginEmail').value;
     let loginPassword = document.getElementById('loginPassword').value;
@@ -78,6 +79,7 @@ async function logout(){
     document.getElementById('logout').classList.add('dNone');
 }
 
+/** this function remembers the userdata if wanted in the localstorage */
 function checkRememberMe(loginEmail,loginPassword){
     if((document.getElementById('rememberMe').checked) == true){
         localStorage.setItem('user',loginEmail);
@@ -91,12 +93,14 @@ function checkRememberMe(loginEmail,loginPassword){
     }
 }
 
+/** this function is the guest login  */
 async function guestUser(){
     await backend.setItem('currentUser', JSON.stringify({'currentUser':''}));
     window.location.href='summary.html?animate=play';
     document.getElementById('initialHeader').classList.add('dNone');
 }
- 
+
+/** this function checks if in a previous session remember me was checked */
 function remember(){
     if(localStorage.getItem('remember')){
         document.getElementById('loginEmail').value = localStorage.getItem('user');
@@ -106,6 +110,7 @@ function remember(){
     }
 }
 
+/** this function renders the initials for the current and the guest user  */
 function renderHeadInitials(){
     let activUser = currentUser['currentUser'];
     if(activUser !== ''){
@@ -120,7 +125,10 @@ function renderHeadInitials(){
     }
 }
 
-
+/** this function resets the password
+ * it gets two passwords and checks if they are similar
+ * then it saves the password to the user
+ */
 async function resetUserPassword(){
     let pw1 = document.getElementById('reset1Password').value;
     let pw2 = document.getElementById('reset2Password').value;

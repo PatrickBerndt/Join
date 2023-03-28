@@ -126,9 +126,20 @@ function renderOverlaySubTask(i){
     for (let s = 0; s < subTasks.length; s++) {
         const subTask = subTasks[s];
         document.getElementById('overlaySubtask').innerHTML +=/*html*/`
-        <input type="text" value="${subTask['subTask']}">
+        <div class="listNewCategory"><input id="editSubtask${s}" class="width80" type="text" value="${subTask['subTask']}">|<img onclick="editSubtask(${i},${s})" src="assets/icon/blue-check.png"></div>
         `;
     }
+}
+
+/** this function edits the subtasks */
+async function editSubtask(i,s){
+    let editSub = document.getElementById(`editSubtask${s}`).value;
+    tasks[i]['subtask'][s]['subTask']=editSub;
+    await backend.setItem('tasks', JSON.stringify(tasks));
+    document.getElementById(`editSubtask${s}`).classList.toggle('succsess');
+    setTimeout(() => {
+        document.getElementById(`editSubtask${s}`).classList.toggle('succsess');
+    }, 500);
 }
 
 /** this function loads the subtasks from the task into the subtask array */

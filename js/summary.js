@@ -1,3 +1,6 @@
+/** this is the greeting function, 
+ * it greets the user by his/her name or the guest user without one
+  */
 function greetUser(){
     let activUser = currentUser['currentUser'];
     if(activUser !== ''){
@@ -15,6 +18,7 @@ function greetUser(){
     checkPosition();
 }
 
+/** this function toggles the greeting overlay in the mobile view below 850px */
 function greetAnimation(){
     document.getElementById('mobileOverlay').classList.remove('dNone');
     setTimeout(() => {
@@ -22,6 +26,7 @@ function greetAnimation(){
     }, 2000);
 }
 
+/** this function returns the greeting frase based on the time */
 function getGeetingTime(){
     let today = new Date()
     let currentHour = today.getHours()
@@ -38,6 +43,9 @@ function getGeetingTime(){
     } 
 }
 
+/** this function renters the numbers for the summary page 
+ * it looks through all the task  
+ */
 function checkPosition(){
         let inToDo=0;
         let inInProgress=0;
@@ -56,6 +64,7 @@ function checkPosition(){
     getDeadline();
 }
 
+/** this function calculats which date is the closes to the date today  */
 function getDeadline(){
     let datesToSort = [];
     const d = new Date();

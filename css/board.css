@@ -309,3 +309,9 @@ height: 30px;
     display: flex;
     flex-direction: column;
 }
+.width80{
+    width: 85%;
+}
+.width90{
+    width: 90%;
+}

@@ -128,7 +128,7 @@ function generateFullscreenView(i,title,description,category,dueDate,prioType,pr
 function generateOverlyEditView(i){
     document.getElementById('overlayCardEdit').innerHTML='';
     document.getElementById('overlayCardEdit').innerHTML=/*html*/`
-    <div class="innerContentBoxOverlay">
+    <form class="innerContentBoxOverlay" onsubmit="addTask(${i});return false;">
 
         <img class="overlayCardClose" src="assets/icon/clear.png" onclick="toggleOverlayEdit(${i})">
 
@@ -149,9 +149,9 @@ function generateOverlyEditView(i){
         <div class="overlayAddCategoryContent dNone" id="addCategoryContent"></div>
 
         <div class="priorityBtn">
-            <button id="high" onclick="setPrio('high')">Urgent <img src="assets/icon/prioUrgent.png"></button>
-            <button id="mid" onclick="setPrio('mid')">Medium <img src="assets/icon/prioMedium.png"></button>
-            <button id="low" onclick="setPrio('low')">Low <img src="assets/icon/prioLow.png"></button>  
+            <button type="button" id="high" onclick="setPrio('high')">Urgent <img src="assets/icon/prioUrgent.png"></button>
+            <button type="button" id="mid" onclick="setPrio('mid')">Medium <img src="assets/icon/prioMedium.png"></button>
+            <button type="button" id="low" onclick="setPrio('low')">Low <img src="assets/icon/prioLow.png"></button>  
         </div>
 
         <h4>Description</h4>
@@ -160,10 +160,10 @@ function generateOverlyEditView(i){
         <h4>Subtask</h4>
         <div class="overlaySubtaskField">
             <input id="addSubToList" class="addedSubtask" placeholder="Add new subtask" type="text">
-            <img class="addSubtaskPlus" onclick="addSubToList('edit')" src="assets/icon/puls-blue.png">
+            <div onclick="addSubToList('edit')"><img class="addSubtaskPlus" type="button"  src="assets/icon/puls-blue.png"/></div> 
         </div>
-        <div  id="overlaySubtask"></div>
-        <button class="btn saveChanges" style="padding: 10px;  margin-left: 30%;" onclick="addTask(${i})">Save Changes</button>
-    </div>
+        <div  id="overlaySubtask" class="width90"></div>
+        <button type="submit" class="btn saveChanges" style="padding: 10px;  margin-left: 30%;" >Save Changes</button>
+    </form>
     `;
 }

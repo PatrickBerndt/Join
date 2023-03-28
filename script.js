@@ -30,7 +30,6 @@ async function init(c) {
     categorys = JSON.parse(backend.getItem('categorys')) || [];
     currentUser = JSON.parse(backend.getItem('currentUser')) || [];
     subTaskIsChecked = JSON.parse(backend.getItem('subTaskIsChecked')) || [];
-
     pageInit(c);
 }
 
@@ -52,25 +51,23 @@ async function pageInit(c){
     if(document.getElementById('dueDate') != undefined){
         dateRestrict();
     }
-        renderHeadInitials();
+    if(document.getElementById('initialHeader') != undefined){
+         renderHeadInitials();
+    }
         notificationBubble()
 }
 
 /** this funcion restricts the date so you can´t pick dates in the past */
 function dateRestrict(){
     let dtToday = new Date();
-
     let month = dtToday.getMonth() + 1;
     let day = dtToday.getDate();
     let year = dtToday.getFullYear();
-
     if(month < 10)
         month = '0' + month.toString();
     if(day < 10)
         day = '0' + day.toString();
-
     let maxDate = year + '-' + month + '-' + day;    
     document.getElementById('dueDate').setAttribute('min', maxDate);
-    
 }
 

@@ -1,14 +1,18 @@
-
-
+/** this function toggles the overlay for add Contact */
 function toggleAddContact(){
     document.getElementById('addNewContact').classList.toggle('dNone');
 }
 
+/** this function toggles the overlay for edit Contact */
 function toggleEditContact(i){
     document.getElementById('editContact').classList.toggle('dNone');
     fillEditBox(i);
 }
 
+/** this function looks witch letters are on the first palce at the fitstname
+ * and pushes it into the array letters if it is not allready present.
+ * it sorts the array and calls the renderLetters function
+  */
 function getLetters(){
     for (let i = 0; i < users.length; i++) {
         const user = users[i];
@@ -21,6 +25,7 @@ function getLetters(){
     renderLetters();
 }
 
+/** this function gets all information to creat a new contact. it creats a user JSON object to save it */
 function addContact(){
     let x='addNew';
     let name = document.getElementById('contactName').value;
@@ -28,15 +33,16 @@ function addContact(){
     let tel = document.getElementById('contactTel').value;
     let firstName = name.split(' ').slice(0, -1).join(' ');
     let lastName = name.split(' ').slice(-1).join(' ');
-    let initials = name.replace(/[^A-Z]/g, '');
+    let toValid = titleCase(firstName) + titleCase(lastName);
+    let initials = toValid.replace(/[^A-Z]/g, '');
     let color = '#'+(Math.floor(Math.random()*16777215).toString(16));
-    let user = {'firstName':firstName,'lastName':lastName,'email':email,'password':'','color':color,'phone':tel,'initial':initials};
+    let user = {'firstName':titleCase(firstName),'lastName':titleCase(lastName),'email':email,'password':'','color':color,'phone':tel,'initial':initials};
     addUser(user,x);
     toggleAddContact();
     getLetters();
-
 }
 
+/** this function gets all information to creat a new user. it creats a user JSON object to save it */
 function addSignUpUser(){
     let x='signup';
     let name = document.getElementById('signUpName').value;
@@ -44,12 +50,19 @@ function addSignUpUser(){
     let password = document.getElementById('signUpPW').value;
     let firstName = name.split(' ').slice(0, -1).join(' ');
     let lastName = name.split(' ').slice(-1).join(' ');
-    let initials = name.replace(/[^A-Z]/g, '');
+    let toValid = titleCase(firstName) + titleCase(lastName);
+    let initials = toValid.replace(/[^A-Z]/g, '');
     let color = '#'+(Math.floor(Math.random()*16777215).toString(16));
-    let user = {'firstName':firstName.capitalize(),'lastName':lastName.capitalize(),'email':email,'password':password,'color':color,'phone':'','initial':initials};
+    let user = {'firstName':titleCase(firstName),'lastName':titleCase(lastName),'email':email,'password':password,'color':color,'phone':'','initial':initials};
     addUser(user,x);
 }
 
+/** this function capitalize the first letter of a given string */
+function titleCase(string){
+    return string[0].toUpperCase() + string.slice(1).toLowerCase();
+}
+
+/** this function renders a detail view for the contact on position i */
 function renderContact(i){
     wipeActivContact()
     const user = users[i];
@@ -64,6 +77,7 @@ function renderContact(i){
     switchInMobile();
 }
 
+/** this function switches between the contact list and the detail view below 850px view width */
 function switchInMobile(){
     document.getElementById('contactContent').classList.toggle('shrinkMobile');
     document.getElementById('contactContent').classList.toggle('growMobile');
@@ -71,12 +85,14 @@ function switchInMobile(){
     document.getElementById('contactContentRight').classList.toggle('growMobile');
 }
 
+/** this function removes the activ class from all the contacts */
 function wipeActivContact(){
     for (let i = 0; i < users.length; i++) {
         document.getElementById(`contactBox${i}`).classList.remove('activ');
     }
 }
 
+/** this function clears all the input felds for add contact and signup */
 function wipeInput(x){
     if(x == 'addNew'){
         document.getElementById('contactName').value='';
@@ -90,13 +106,14 @@ function wipeInput(x){
     }
 }
 
-
+/** this function saves the users JSON to the backend after aa new user is added */
 async function addUser(user,x) {
     users.push(user);
     await backend.setItem('users', JSON.stringify(users));
      wipeInput(x);
 }
 
+/** this function draws lines and letters between the contacts in alphabetical order */
 function renderLetters() {
     let letterbox = document.getElementById('contactContent');
     letterbox.innerHTML = '';
@@ -113,6 +130,7 @@ function renderLetters() {
     updateContact();
 }
 
+/** this function renders all users into the contact section  */
 function updateContact(){
     for (let i = 0; i < users.length; i++) {
         const user = users[i];
@@ -126,6 +144,7 @@ function updateContact(){
     }
 }
 
+/** this function renders the edit box for the contacts */
 function fillEditBox(i){
     const user = users[i];
         let email = user['email'];
@@ -137,15 +156,17 @@ function fillEditBox(i){
         document.getElementById('editContact').innerHTML = editBoxTemplate(i,tel,firstName,lastName,email,initial,color);
 }
 
+/** this function saves the edited user informations  */
 async function saveEdit(i){
     let user = users[i];
     let name = document.getElementById('editName').value;
     let email = document.getElementById('editEmail').value;
     let tel = document.getElementById('editTel').value;
-    let firstName = name.split(' ').slice(0, -1).join(' ');
-    let lastName = name.split(' ').slice(-1).join(' ');
-    let initials = name.replace(/[^A-Z]/g, '');
-    user = {'firstName':firstName,'lastName':lastName,'email':email,'password':user['password'],'color':user['color'],'phone':tel,'initial':initials};
+    let firstName = name.split(' ').slice(0, -1).join(' ').capitalize();
+    let lastName = name.split(' ').slice(-1).join(' ').capitalize();
+    let toValid = titleCase(firstName) + titleCase(lastName);
+    let initials = toValid.replace(/[^A-Z]/g, '');
+    user = {'firstName':titleCase(firstName),'lastName':titleCase(lastName),'email':email,'password':user['password'],'color':user['color'],'phone':tel,'initial':initials};
     users[i]=user;
     await backend.setItem('users', JSON.stringify(users));
     document.getElementById('editContact').classList.toggle('dNone');
