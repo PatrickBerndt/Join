@@ -10,7 +10,8 @@
     left: 232px;
     top: 97px;
     z-index: 3;
-    overflow: auto;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 .contactBox{
     display: flex;

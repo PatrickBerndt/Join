@@ -9,20 +9,18 @@ const params = new Proxy(new URLSearchParams(window.location.search), {
 async function logIn(){
     let loginEmail = document.getElementById('loginEmail').value;
     let loginPassword = document.getElementById('loginPassword').value;
-    for (let i = 0; i < users.length; i++) {
-        const user = users[i];
-        if ((user['email'] == loginEmail ) && (user['password'] == loginPassword )){
-            await checkRememberMe(loginEmail,loginPassword);
-            await backend.setItem('currentUser', JSON.stringify({'currentUser':i}));
-            window.location.href='summary.html?animate=play';
-        }
+    let i=0;
+    let user = users.find(u=> u.email == loginEmail && u.password == loginPassword);
+    if(user != undefined){
+        await checkRememberMe(loginEmail,loginPassword);
+        while (user != users[i]) {
+             i++;
+         }
+        await backend.setItem('currentUser', JSON.stringify({'currentUser':i}));
+        window.location.href='summary.html?animate=play'; 
+    }else{
+        showAlertLogin();  
     }
-    setTimeout(() => {
-        if(currentUser.length == undefined){
-        showAlertLogin();
-        }
-    }, 200);
-    
 }
 
 /** this function highlights email and password if entered worng */

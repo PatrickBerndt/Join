@@ -20,6 +20,11 @@ function toggleOverlayEdit(){
     document.getElementById('overlayCard').innerHTML='';
 }
 
+/** this function toggles the popup slideout and slidein */
+function togglePopUp(){
+    document.getElementById('addTaskPopup').classList.toggle('dNone')
+}
+
 /** this function filters all tasks by a search value */
 function filterTasks(){
     search = document.getElementById('searchBox').value;

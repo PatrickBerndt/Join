@@ -173,10 +173,19 @@ function pickActivColor(i){
 async function addNewCategory(){
     let categoryTitle = document.getElementById('newCatInput').value;
     let categoryColor = colors[activColor];
-    category = {'categoryTitle':categoryTitle,'categoryColor':categoryColor};
-    categorys.push(category);
-    await backend.setItem('categorys', JSON.stringify(categorys));
-    listCategory();
+    if((categoryTitle.length != 0) && (categoryColor != undefined)){
+        category = {'categoryTitle':categoryTitle,'categoryColor':categoryColor};
+        categorys.push(category);
+        await backend.setItem('categorys', JSON.stringify(categorys));
+        listCategory();
+    }else{
+        document.getElementById('newCatInput').classList.toggle('wiggle');
+        document.getElementById('colorPallet').classList.toggle('wiggle');
+        setTimeout(() => {
+            document.getElementById('newCatInput').classList.toggle('wiggle');
+            document.getElementById('colorPallet').classList.toggle('wiggle');
+        }, 1500);
+    }
 }
 
 /** this function lists all contacts to choose from to assigning to a task */

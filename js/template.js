@@ -40,7 +40,7 @@ function editBoxTemplate(i,tel,firstName,lastName,email,initial,color){
             <img src="assets/icon/logoSmallWhite.png">
             <h3>Edit contact</h3>
         </div>
-        <form onsubmit="saveEdit(${i});return false;" class="addNewInputBox">
+        <form onsubmit="checkSaveEdit(${i});return false;" class="addNewInputBox">
             <div class="avatarBoxFull" style="background-color: ${color}; margin-top: 30px; margin-right:0;" id="avatarBox">
                 ${initial}
             </div>
@@ -49,6 +49,7 @@ function editBoxTemplate(i,tel,firstName,lastName,email,initial,color){
             <input id="editTel" value="${tel}" type="tel" placeholder="Phone" required style="background-image:  url(assets/icon/phone.png); background-repeat: no-repeat; background-position: center right 14px;">
             <button class="btn" type="submit">Save</button>
         </form>
+        <div id="notificationBubbleContact" class="notificationBubble dNone"></div>
     </div>
     `;
 }

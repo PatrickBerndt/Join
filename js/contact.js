@@ -25,6 +25,24 @@ function getLetters(){
     renderLetters();
 }
 
+/** this function validates the phonenumber */
+function checkSaveEdit(i){
+    let check = document.getElementById('editTel').value;
+    if(isNaN(check)){
+        document.getElementById('editTel').classList.add('wiggle');
+        document.getElementById('notificationBubbleContact').classList.toggle('dNone');
+        document.getElementById('notificationBubbleContact').innerHTML= /*html*/`
+                <div class="bubbleMessage"><span>Phone number is not a number</span></div>
+                `;
+        setTimeout(() => {
+            document.getElementById('editTel').classList.remove('wiggle');
+            document.getElementById('notificationBubbleContact').classList.toggle('dNone');
+        }, 4000);
+    }else{
+        saveEdit(i);
+    }
+}
+
 /** this function gets all information to creat a new contact. it creats a user JSON object to save it */
 function addContact(){
     let x='addNew';
@@ -40,6 +58,24 @@ function addContact(){
     addUser(user,x);
     toggleAddContact();
     getLetters();
+}
+
+/** this function checks if the user allready exist */
+function checkExistingUser(){
+    let mail = document.getElementById('signUpEmail').value;
+    let user = users.find(u=> u.email == mail);
+    if(user != undefined){
+        document.getElementById('notificationBubbleSignup').classList.toggle('dNone');
+        document.getElementById('notificationBubbleSignup').innerHTML= /*html*/`
+        <div class="bubbleMessage"><span>The email already exists</span></div>
+        `;        
+        setTimeout(() => {
+            document.getElementById('notificationBubbleSignup').classList.toggle('dNone');
+        }, 3000);
+
+    }else{
+        addSignUpUser();
+    }
 }
 
 /** this function gets all information to creat a new user. it creats a user JSON object to save it */
@@ -59,7 +95,11 @@ function addSignUpUser(){
 
 /** this function capitalize the first letter of a given string */
 function titleCase(string){
-    return string[0].toUpperCase() + string.slice(1).toLowerCase();
+    if(string.length != 0){
+       return string[0].toUpperCase() + string.slice(1).toLowerCase(); 
+    }else{
+        return '';
+    }
 }
 
 /** this function renders a detail view for the contact on position i */
@@ -162,8 +202,8 @@ async function saveEdit(i){
     let name = document.getElementById('editName').value;
     let email = document.getElementById('editEmail').value;
     let tel = document.getElementById('editTel').value;
-    let firstName = name.split(' ').slice(0, -1).join(' ').capitalize();
-    let lastName = name.split(' ').slice(-1).join(' ').capitalize();
+    let firstName = name.split(' ').slice(0, -1).join(' ');
+    let lastName = name.split(' ').slice(-1).join(' ');
     let toValid = titleCase(firstName) + titleCase(lastName);
     let initials = toValid.replace(/[^A-Z]/g, '');
     user = {'firstName':titleCase(firstName),'lastName':titleCase(lastName),'email':email,'password':user['password'],'color':user['color'],'phone':tel,'initial':initials};

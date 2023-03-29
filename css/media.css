@@ -9,9 +9,26 @@
         width: 50%;
     }
 }
-@media (max-width:1200px){
+@media (max-width:1250px){
     .BSHL{
         width: 17%;
+    }
+    .contactContent{
+        width: 100%;
+    }
+    .contactContentRight{
+        left: 232px;        
+    }
+    .growMobile{
+        opacity: 1;
+        z-index: 10;
+    }
+    .shrinkMobile{
+        opacity: 0;
+        z-index: 0;
+    }
+    .showArrowMobile{
+        display: flex;
     }
 }
 @media (max-width:1050px){
@@ -63,18 +80,25 @@
     }
     .contactContent{
         left: unset;
-        width: 45%;
+        
         padding-left: 0;
         height: calc(98vh - 170px);
     }
     .contactContentRight{
-        left: 45%;
+        left: 0;
     }
     .contactBox{
         margin-left: 0;
     }
     .impressumContent{
         left: 50px;
+    }
+    .letterBox{
+        margin-left: 20px;
+    }
+    .avatar{
+        margin-left: 20px;
+        margin-right: 10px;
     }
 }
 @media (max-width: 850px){
@@ -105,23 +129,7 @@
     .dragBox{
         min-height: 150px;
     }
-    .contactContent{
-        width: 100%;
-    }
-    .contactContentRight{
-        left: 0;        
-    }
-    .growMobile{
-        opacity: 1;
-        z-index: 10;
-    }
-    .shrinkMobile{
-        opacity: 0;
-        z-index: 0;
-    }
-    .showArrowMobile{
-        display: flex;
-    }
+
 }
 @media (max-width: 700px){
     .loginBox{

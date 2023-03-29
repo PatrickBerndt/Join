@@ -90,6 +90,7 @@ height: 30px;
     margin: 0 15px;
     margin-bottom: 20px;
     color: rgb(179, 178, 178);
+    word-break: break-all;
 }
 .boardCardInitialArea{
     width: 80%;
@@ -314,4 +315,44 @@ height: 30px;
 }
 .width90{
     width: 90%;
+}
+.addTaskPopup{
+    backdrop-filter: blur(10px);
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 10;
+    display: flex;
+    justify-content: flex-end;
+}
+.windowPopup{
+    height: 100%;
+    width: 500px;
+    background-color: white;
+    border-radius: 30px 0 0 30px;
+    box-shadow: 1px 1px 5px 0px rgb(0, 0, 0, 0.2);
+    position: relative;
+}
+.addTaskMainPopup{
+    position: absolute;
+    top: 0px;
+    bottom: 0;
+    left: 40px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+    padding-right: 20px;
+    gap: 10px;
+    overflow-y: scroll;
+    margin-bottom: 50px;
+}
+.popuphead{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+.popuphead h2{
+    font-size: 40px;
+    margin: 0;
 }

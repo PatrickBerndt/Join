@@ -96,11 +96,13 @@ a{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    position: absolute;
     border-radius: 20px 0px 20px 20px;
     box-shadow: 1px 1px 5px 0px rgb(0, 0, 0, 0.2);
     position: absolute;
     top: 97px;
     right: 40px;
+    z-index: 9999;
     
 }
 .initialHeader{

@@ -23,11 +23,11 @@
     <script src="js/template.js"></script>
 
 </head>    
-<body onload="init()">
+<body style="overflow: hidden;" onload="init()">
     
     <div class="mainWindowBlue">
         <img src="assets/icon/logoMediumWhite.png" style="position: absolute; top: 80px; left: 77px; width: 100px;">
-        <form class="loginBox" onsubmit="addSignUpUser();return false;">
+        <form class="loginBox" onsubmit="checkExistingUser();return false;">
             <img class="backButton" src="assets/icon/back.png" onclick="window.location.href='index.html';">
             <h2 style="border-bottom: 3px solid #4589ff;padding-bottom: 20px;">Sign up</h2>
             <input id="signUpName" type="text" placeholder="Name" required  style="background-image:  url(assets/icon/name.png); background-repeat: no-repeat; background-position: center right 14px; margin-top: 5px;">
@@ -39,6 +39,6 @@
             
         </form>
     </div>
-    
+    <div id="notificationBubbleSignup" class="notificationBubble dNone"></div>
 </body>
 </html>

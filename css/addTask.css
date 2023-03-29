@@ -16,6 +16,24 @@
     100%{transform: rotate(0deg);
         border: 2px solid white;}
 }
+@keyframes slideout{
+    0%{}
+    100%{}
+}
+@keyframes slidein{
+    0%{}
+    100%{}
+}
+.slideOut{
+    animation-name: slideout;
+    animation-duration: 500ms;
+    animation-timing-function: ease-in-out;
+}
+.slideIn{
+    animation-name: slidein;
+    animation-duration: 500ms;
+    animation-timing-function: ease-in-out;
+}
 .wiggle{
     animation-name: wiggleWiggle;
     animation-duration: 1s;
