@@ -72,6 +72,9 @@ height: 30px;
     cursor: pointer;
     background-color: white;
 }
+.boardCardPrio{
+    padding: 20px 0;
+}
 .boardCardCategory{
     padding: 2px 15px;
     margin-top: 15px;

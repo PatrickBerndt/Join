@@ -173,6 +173,7 @@ a{
     animation-name: notificationBubble;
     animation-duration: 3s;
     animation-timing-function: ease-in-out;
+    z-index: 50;
 }
 .bubbleMessage{
     color: white;

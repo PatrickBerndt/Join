@@ -60,6 +60,24 @@ function addContact(){
     getLetters();
 }
 
+/** this function validates the phonenumber */
+function checkSaveNew(){
+    let check = document.getElementById('contactTel').value;
+    if(isNaN(check)){
+        document.getElementById('contactTel').classList.add('wiggle');
+        document.getElementById('notificationBubbleContactNew').classList.toggle('dNone');
+        document.getElementById('notificationBubbleContactNew').innerHTML= /*html*/`
+                <div class="bubbleMessage"><span>Phone number is not a number</span></div>
+                `;
+        setTimeout(() => {
+            document.getElementById('contactTel').classList.remove('wiggle');
+            document.getElementById('notificationBubbleContactNew').classList.toggle('dNone');
+        }, 4000);
+    }else{
+        addContact();
+    }
+}
+
 /** this function checks if the user allready exist */
 function checkExistingUser(){
     let mail = document.getElementById('signUpEmail').value;
