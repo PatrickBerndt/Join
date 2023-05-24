@@ -80,9 +80,9 @@ function getDeadline(){
     while(datesToSort[0] < currentDate ){
         datesToSort = datesToSort.slice(1);
     }
-    if(datesToSort != []){
+    if(datesToSort.length != 0){
        document.getElementById('upcomingDeadline').innerHTML =`${datesToSort[0]}`; 
-    }else{
+    }else {
         document.getElementById('upcomingDeadline').innerHTML =`No`; 
     }
 }
